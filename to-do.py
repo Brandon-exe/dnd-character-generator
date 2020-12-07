@@ -11,12 +11,6 @@ def get_allignment():
 def get_background():
     pass
 
-def get_hight():
-    pass
-
-def get_weight():
-    pass
-
 def get_name:():
     pass
 
