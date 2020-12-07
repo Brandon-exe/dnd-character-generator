@@ -90,7 +90,7 @@ def get_race(stat_dict):
             'weight': range(120, 200),
         },
         {
-            'name':  'Dragonborn'
+            'name':  'Dragonborn',
             'bonuses': {
                 'Str': 2,
                 'Cha': 1,
@@ -100,7 +100,7 @@ def get_race(stat_dict):
             'weight': range(200, 300),
         },
         {
-            'name':  'Forest Gnome'
+            'name':  'Forest Gnome',
             'bonuses': {
                 'Int': 2,
                 'Dex': 1,
@@ -110,7 +110,7 @@ def get_race(stat_dict):
             'weight': range(20, 50),
         },
         {
-            'name':  'Rock Gnome'
+            'name':  'Rock Gnome',
             'bonuses': {
                 'Int': 2,
                 'Con': 1,
@@ -120,7 +120,7 @@ def get_race(stat_dict):
             'weight': range(20, 50),
         },
         {
-            'name':  'Half-Elf'
+            'name':  'Half-Elf',
             'bonuses': {
                 'Cha': 2,
             },
@@ -129,7 +129,7 @@ def get_race(stat_dict):
             'weight': range(115, 180),
         },
         {
-            'name':  'Half-Orc'
+            'name':  'Half-Orc',
             'bonuses': {
                 'Str': 2,
                 'Con': 1,
@@ -139,7 +139,7 @@ def get_race(stat_dict):
             'weight': range(150, 300),
         },
         {
-            'name':  'Tiefling'
+            'name':  'Tiefling',
             'bonuses': {
                 'Cha': 2,
                 'Int': 1,
