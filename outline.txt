@@ -19,7 +19,7 @@ Character Race
 
 Class
 
-    Sub-Class
+    Sub-Class (after lvl 1)
         Class Skills
         Spells/Cantrips
         Skills

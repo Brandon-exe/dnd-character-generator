@@ -11,19 +11,43 @@ def get_race(stat_dict):
                 'Con': 2,
                 'Wis': 1,
             },
+            'traits': {
+                'Darkvision', 'Dwarven Resilience', 'Stonecunning'
+            },
+            'proficiency': {
+                'weapons': {
+                    'battleaxe', 'handaxe', 'light hammer', 'warhammer',
+                },
+                'tools-random'{
+                    'smiths tools', 'brewer supplies', 'mason tools'
+                },
+            },
             'age': range(50, 350),
             'height': range(48, 60)
             'weight': range(100, 200),
+            'speed': 25
         },
         {
             'name': 'Mountain Dwarf',
             'bonuses': {
                 'Con': 2,
-                'Str': 2,
+                'Wis': 1,
+            },
+            'traits': {
+                'Darkvision', 'Dwarven Resilience', 'Stonecunning'
+            },
+            'proficiency': {
+                'weapons': {
+                    'battleaxe', 'handaxe', 'light hammer', 'warhammer',
+                },
+                'tools-random'{
+                    'smiths tools', 'brewer supplies', 'mason tools'
+                },
             },
             'age': range(50, 350),
-            'height': range(48, 60),
+            'height': range(48, 60)
             'weight': range(100, 200),
+            'speed': 25
         },
         {
             'name': 'High Elf',
@@ -95,6 +119,11 @@ def get_race(stat_dict):
                 'Str': 2,
                 'Cha': 1,
             },
+            'random traits': {
+                'ancestry': {'Black', 'Blue', 'Brass', 
+                'Bronze', 'Copper', 'Gold', 'Green', 
+                'Red', 'Silver', 'White'}
+            }
             'age': range(15, 80),
             'height': range(72, 90),
             'weight': range(200, 300),
