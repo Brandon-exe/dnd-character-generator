@@ -22,3 +22,6 @@ def get_languages():
 
 def get_equipment():
     pass
+
+def get_spells():
+    pass
