@@ -109,7 +109,7 @@ def get_class():
                 }, 
                 'Nature': {
                     # add to proficiency list
-                    'bonus proficiency': 'heavy armor'
+                    'bonus proficiency': 'heavy armor',
                     # gain one druid cantrip, use random to gain one of the following skill proficiencies
                     'Acolyte of Nature': {
                         'Animal Handling', 'Nature', 'Survival',
@@ -120,11 +120,11 @@ def get_class():
                 }, 
                 'Tempest': {
                     'traits': {
-                        # add to proficiency list
-                        'bonus proficiency': {
-                            'heavy armor', 'martial weapons',
-                        },
                         'Wrath of the Storm',
+                    },
+                    # add to proficiency list
+                    'bonus proficiency': {
+                        'heavy armor', 'martial weapons',
                     },
                     'domain spells': {
                         'fog cloud', 'thunderwave',
@@ -153,6 +153,154 @@ def get_class():
                 'cantrips known': 3,
                 'spells known': 2,
             }
+        },
+        {
+            'name': 'Druid',
+            'hit dice': 8,
+            'proficiencies': {
+                'armor': {
+                'light armor', 'medium armor', 'shields',
+                },
+                'weapons': {
+                    'clubs', 'daggers', 'javelins', 'maces', 'quarterstaffs', 'scimitars', 'sickles', 'slings', 'spears',
+                },
+                'tools': 'Herbalism Kit'
+                # need to randomly choose two
+                'skills': {
+                    'Arcana', 'Animal Handling', 'Insight', 'Medicine', 'Nature', 'Perception', 'Religion', 'Survival',
+                },
+                'saving throws': {
+                'Int', 'Wis',
+                },
+            },
+            'traits': set(),
+            'languages': 'Druidic',
+        },
+        {
+            'name': 'Fighter',
+            'hit dice': 10,
+            'proficiencies': {
+                'armor': {
+                    'light armor', 'medium armor', 'heavy armor', 'shields',
+                },
+                'weapons': {
+                    'simple weapons', 'martial weapons',
+                },
+                'tools': set(),
+                'saving throws': {
+                    'Str', 'Con',
+                },
+                # need to randomly choose two
+                'skills': {
+                    'Acrobatics', 'Animal Handling', 'Athletics', 
+                    'History', 'Insight', 'Intimidation', 'Perception', 'Survival',
+                },
+            },
+            'traits': {
+                'Second Wind',
+            },
+            # need to randomly choose one
+            'Fighting Style': {
+                'Archery', 'Defense', 'Dueling', 
+                'Great Weapon Fighting', 'Protection',' Two-Weapon Fighting',
+            },
+        },
+        {
+            'name': 'Monk',
+            'hit dice': 8,
+            'proficiencies': {
+                'armor': set(),
+                'weapons': {
+                    'simple weapons', 'shortswords',
+                },
+                'saving throws': {
+                    'Str', 'Dex',
+                },
+                # need to randomly choose two
+                'skills': {
+                    'Acrobatics', 'Athletics', 'History', 'Insight', 'Religion', 'Stealth',
+                },
+            },
+            'traits': {
+                'Unarmored Defense', 'Martial Arts',
+            },
+        },
+        {
+            'name': 'Paladin',
+            'hit dice': 10,
+            'proficiencies': {
+                'armor': {
+                    'light armor', 'medium armor', 'heavy armor',
+                },
+                'weapons': {
+                    'simple weapons', 'martial weapons',
+                },
+                'tools': set(),
+                'saving throws': {
+                    'Wis', 'Cha',
+                },
+                # need to choose two randomly
+                'skills': {
+                    'Athletics', 'Insight', 'Intimidation', 'Medicine', 'Persuasion', 'Religion',
+                },
+            },
+            'traits': {
+                'Divine Sense', 'Lay on Hands',
+            },
+        },
+        {
+            'name': 'Ranger',
+            'hit dice': 10,
+            'proficiencies': {
+                'armor': {
+                    'light armor', 'medium armor', 'shields',
+                },
+                'weapons': {
+                    'simple weapons', 'martial weapons',
+                },
+                'tools': set(),
+                'saving throws': {
+                    'Str', 'Dex',
+                },
+                # need to choose three randomly
+                'skills': {
+                    'Animal Handling', 'Athletics', 'Insight', 'Investigation', 
+                    'Nature', 'Perception', 'Stealth', 'Survival',
+                },
+            },
+            'traits': {
+                # need to choose one randomly
+                'Favored Enemy': {
+                    'aberrations', 'beasts', 'celestials', 'constructs', 'dragons', 'elementals', 
+                    'fey', 'fiends', 'giants', 'monstrosities', 'oozes', 'plants', 'undead',
+                },
+                # need to choose one randomly
+                'Natural Explorer': {
+                    'arctic', 'coast', 'desert', 'forest', 'grassland', 'mountain', 'swamp', 'Underdark',
+                },
+            },
+        },
+        {
+            'name': 'Rogue',
+            'hit dice': 8,
+            'proficiencies': {
+                'armor': 'light armor',
+                'weapons': {
+                    'simple weapons', 'hand crossbows', 'longswords', 'rapiers', 'shortswords',
+                },
+                'tools': 'thieves tools',
+                'saving throws': {
+                    'Dex', 'Int',
+                },
+                # need to choose four randomly
+                'skills': {
+                    'Acrobatics', 'Athletics', 'Deception', 'Insight', 'Intimidation', 'Investigation', 
+                    'Perception', 'Performance', 'Persuasion', 'Slight of Hand', 'Stealth',
+                },
+            },
+            'traits': {
+                'Expertise', 'Sneak Attack', 'Thieves Cant',
+            },
         },
     ]
     char_class = random.choice(classes)
