@@ -302,12 +302,12 @@ def get_race(stat_dict):
     ]
 
     race = random.choice(races)
-    race_name = race['name']
-    age = random.choice(race['age'])
-    height = random.choice(race['height'])
-    weight = random.choice(race['weight'])
+    race_name = races['name']
+    age = random.choice(races['age'])
+    height = random.choice(races['height'])
+    weight = random.choice(races['weight'])
 
-    for stat in race['bonuses']:
-        stat_dict[stats] += race['bonuses'][stats]
+    for stat in races['bonuses']:
+        stat_dict[stats] += races['bonuses'][stats]
 
     return race
