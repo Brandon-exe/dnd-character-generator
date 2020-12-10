@@ -1,4 +1,5 @@
 import random
+import pprint
 from random import randint
 from get_race import get_race
 
@@ -19,6 +20,13 @@ def stats():
 # stores the final stat rolls in a dict with associative stat labels
 # This mutates a nonlocal variable
 stat_dict = dict(zip(['Str', 'Con', 'Dex', 'Int', 'Wis', 'Cha'], stats()))
+
+race = get_race(stat_dict)
+print('stats: ', end='')
+pprint.pprint(stat_dict)
+print('race: ', end='')
+pprint.pprint(race)
+
 
 # prints the results
 #for item in stat_dict:
