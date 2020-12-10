@@ -20,16 +20,16 @@ def get_race(stat_dict):
                     'battleaxe', 'handaxe', 'light hammer', 'warhammer',
                 },
                 # need to choose one randomly
-                'tools'{
+                'tools': {
                     'smiths tools', 'brewer supplies', 'mason tools',
                 },
             },
             'age': range(50, 350),
-            'height': range(48, 60)
+            'height': range(48, 60),
             'weight': range(100, 200),
-            'speed': 25
+            'speed': 25,
             'languages': {
-                'Common', 'Dwarvish', 
+                'Common', 'Dwarvish',
             },
         },
         {
@@ -46,16 +46,16 @@ def get_race(stat_dict):
                     'battleaxe', 'handaxe', 'light hammer', 'warhammer',
                 },
                 # Need to choose one randomly
-                'tools'{
+                'tools': {
                     'smiths tools', 'brewer supplies', 'mason tools',
                 },
             },
             'age': range(50, 350),
-            'height': range(48, 60)
+            'height': range(48, 60),
             'weight': range(100, 200),
-            'speed': 25
+            'speed': 25,
             'languages': {
-                'Common', 'Dwarvish', 
+                'Common', 'Dwarvish',
             },
         },
         {
@@ -75,9 +75,9 @@ def get_race(stat_dict):
             'age': range(100, 750),
             'height': range(60, 78),
             'weight': range(100, 150),
-            'speed': 30
+            'speed': 30,
             'languages': {
-                'Common', 'Elvish', 
+                'Common', 'Elvish',
             },
         },
         {
@@ -97,9 +97,9 @@ def get_race(stat_dict):
             'age': range(100, 750),
             'height': range(60, 78),
             'weight': range(100, 150),
-            'speed': 35
+            'speed': 35,
             'languages': {
-                'Common', 'Elvish', 
+                'Common', 'Elvish',
             },
         },
         {
@@ -119,8 +119,8 @@ def get_race(stat_dict):
             'age': range(100, 750),
             'height': range(60, 78),
             'weight': range(100, 150),
-            'speed': 30
-            'languages':{
+            'speed': 30,
+            'languages': {
                 'Common', 'Elvish'
             },
         },
@@ -132,11 +132,11 @@ def get_race(stat_dict):
             },
             'traits': {
                 'Lucky', 'Brave', 'Halfling Nimbleness', 'Naturally Stealthy',
-            }
+            },
             'age': range(20, 150),
             'height': range(36, 40),
             'weight': range(20, 50),
-            'speed': 25
+            'speed': 25,
             'laungages': {
                 'Common', 'Halfling'
             },
@@ -149,11 +149,11 @@ def get_race(stat_dict):
             },
             'traits': {
                 'Lucky', 'Brave', 'Halfling Nimbleness', 'Stout Resilience',
-            }
+            },
             'age': range(20, 150),
             'height': range(36, 40),
             'weight': range(20, 50),
-            'speed': 25
+            'speed': 25,
             'laungages': {
                 'Common', 'Halfling'
             },
@@ -171,7 +171,7 @@ def get_race(stat_dict):
             'age': range(18, 80),
             'height': range(60, 78),
             'weight': range(120, 200),
-            'speed': 30
+            'speed': 30,
             # need one randomized language
             'languages': {
                 'Common',
@@ -187,14 +187,15 @@ def get_race(stat_dict):
                 'Breath Weapon', 'Damage Resistance',
             },
             'random traits': {
-                'ancestry': {'Black', 'Blue', 'Brass', 
-                'Bronze', 'Copper', 'Gold', 'Green', 
-                'Red', 'Silver', 'White'}
+                'ancestry': {
+                    'Black', 'Blue', 'Brass', 'Bronze', 'Copper', 'Gold',
+                    'Green', 'Red', 'Silver', 'White'
+                }
             },
             'age': range(15, 80),
             'height': range(72, 90),
             'weight': range(200, 300),
-            'speed': 30
+            'speed': 30,
             'languages': {
                 'Common', 'Draconic'
             },
@@ -211,7 +212,7 @@ def get_race(stat_dict):
             'age': range(40, 500),
             'height': range(36, 48),
             'weight': range(20, 50),
-            'speed': 25
+            'speed': 25,
             'languages': {
                 'Common', 'Gnomish',
             },
@@ -224,7 +225,7 @@ def get_race(stat_dict):
             },
             'random traits': {
                 'Clockwork Toy', 'Fire Starter', 'Music Box',
-            }
+            },
             'traits': {
                 'Artificers Lore', 'Tinker',
             },
@@ -234,7 +235,7 @@ def get_race(stat_dict):
             'age': range(40, 500),
             'height': range(36, 48),
             'weight': range(20, 50),
-            'speed': 25
+            'speed': 25,
             'languages': {
                 'Common', 'Gnomish',
             },
@@ -250,15 +251,16 @@ def get_race(stat_dict):
             },
             # need two random skill proficiancies
             'random proficiancy': {
-                'Athletics', 'Acrobatics', 'Sleight of Hand', 'Stealth', 'Arcana', 
-                'History', 'Investigation', 'Nature', 'Nature', 'Religion', 'Animal Handling'
-                'Insight', 'Medicine', 'Perception', 'Survival', 'Deception', 'Intimidation',
+                'Athletics', 'Acrobatics', 'Sleight of Hand', 'Stealth',
+                'Arcana', 'History', 'Investigation', 'Nature', 'Nature',
+                'Religion', 'Animal Handling' 'Insight', 'Medicine',
+                'Perception', 'Survival', 'Deception', 'Intimidation',
                 'Performance', 'Persuasion',
             },
             'age': range(20, 200),
             'height': range(60, 78),
             'weight': range(115, 180),
-            'speed': 30
+            'speed': 30,
             # need one randomized language
             'languages': {
                 'Common', 'Elvish',
@@ -274,12 +276,12 @@ def get_race(stat_dict):
                 'Darkvision', 'Menacing', 'Relentless Endurance', 'Savage Attacks',
             },
             'proficiancy': {
-                'skills:' {'intimidation'},
+                'skills': {'intimidation'},
             },
             'age': range(14, 75),
             'height': range(72, 90),
             'weight': range(150, 300),
-            'speed': 30
+            'speed': 30,
             'languages': {
                 'Common', 'Orc',
             },
@@ -297,7 +299,7 @@ def get_race(stat_dict):
             'age': range(18, 85),
             'height': range(60, 78),
             'weight': range(120, 200),
-            'speed': 30
+            'speed': 30,
             'languages': {
                 'Common', 'Infernal',
             },
@@ -310,7 +312,7 @@ def get_race(stat_dict):
     height = random.choice(races['height'])
     weight = random.choice(races['weight'])
 
-    for stat in races['bonuses']:
-        stat_dict[stats] += races['bonuses'][stats]
+    for stat, bonus in races['bonuses'].items():
+        stat_dict[stat] += bonus
 
     return race
