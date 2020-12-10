@@ -14,7 +14,7 @@ def get_background():
         'Celestial', 'Deep Speech', 'Draconic', 'Infernal', 'Primordial', 'Sylvan', 'Undercommon',
     ]
 
-    background = [
+    backgrounds = [
         {
             'name': 'Acolyte',
             'proficiencies': {
@@ -63,12 +63,15 @@ def get_background():
                 },
             },
             'favorite scam': {
-                '''I cheat at games of chance.''',
-                '''I shave coins or forge documents.''',
-                '''I insinuate myself into people's lives to prey on their weakness and secure their fortunes.''',
-                '''I put on new identities like clothes''',
-                '''I run sleight-of-hand cons on street corners''',
-                '''I convince people that worthless junk is worth their hard-earned money.''',
+                '''cheat at games.''',
+                '''shave coins and forge documents.''',
+                '''insinuate into people's lives to secure their fortunes.''',
+                '''forged identities''',
+                '''sleight-of-hand cons''',
+                '''convince people that worthless junk is worth money.''',
             },
         },
     ]
+
+    background = random.choice(backgrounds)
+    return background
