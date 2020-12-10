@@ -1,4 +1,5 @@
 import random
+from random import sample
 from random import randint
 
 # randomly generate a race and its physical attributes and alter stat block accordingly
@@ -18,7 +19,8 @@ def get_race(stat_dict):
                 'weapons': {
                     'battleaxe', 'handaxe', 'light hammer', 'warhammer',
                 },
-                'tools-random'{
+                # need to choose one randomly
+                'tools'{
                     'smiths tools', 'brewer supplies', 'mason tools',
                 },
             },
@@ -43,7 +45,8 @@ def get_race(stat_dict):
                 'weapons': {
                     'battleaxe', 'handaxe', 'light hammer', 'warhammer',
                 },
-                'tools-random'{
+                # Need to choose one randomly
+                'tools'{
                     'smiths tools', 'brewer supplies', 'mason tools',
                 },
             },

@@ -174,6 +174,10 @@ def get_class():
                 },
             },
             'traits': set(),
+            'spells and cantrips': {
+                'cantrips known': 2,
+                'spells known': 2,
+            }
             'languages': 'Druidic',
         },
         {
@@ -301,6 +305,102 @@ def get_class():
             'traits': {
                 'Expertise', 'Sneak Attack', 'Thieves Cant',
             },
+        },
+        {
+            'name': 'Sorcerer',
+            'hit dice': 6
+            'proficiencies': {
+                'armor': set(),
+                'weapons': {
+                    'daggers', 'darts', 'slings', 'quarterstaffs', 'light crossbow',
+                },
+                'tools': set(),
+                'saving throws': {
+                    'Con', 'Cha',
+                },
+                # need to choose two randomly
+                'skills': {
+                    'Arcana', 'Deception', 'Insight', 'Intimidation', 'Persuasion', 'Religion',
+                },
+            },
+            'traits': {
+                # choose one randomly
+                'Sorcerous Origin': {
+                    'Draconic Bloodline': {
+                        'Dracon Ancestor', 'Draconic Resilience',
+                    },
+                    'Wild Magic': {
+                        'Wild Magic Surge', 'Tides of Chaos',
+                    },
+                },
+            },
+            'spells and cantrips': {
+                'cantrips known': 4,
+                'spells knowns': 2,
+            },
+        },
+        {
+            'name': 'Warlock',
+            'hit dice': 8
+            'proficiencies': {
+                'armor': 'light armor',
+                'weapons': 'simple weapons',
+                'tools': set(),
+                # choose two randomly
+                'saving throws': {
+                    'Wis', 'Cha',
+                }
+                'skils': {
+                    'Arcana', 'Deception', 'History', 'Intimidation', 
+                    'Investigation', 'Nature', 'Religion',
+                },
+            },
+            'traits': {
+                # choose one randomly
+                'Otherwordly Patron': {
+                    'The Archfey': 'Fey Presence',
+                    'The Fiend': 'Dark Ones Blessing', 
+                    'The Great Old One': 'Awakened Mind',
+                },
+            },
+            'spells and cantrips': {
+                'cantrips known': 2,
+                'spells known': 2,
+            },
+        },
+        {
+            'name': 'Wizard',
+            'hit dice': 6,
+            'proficiencies': {
+                'armor': set(),
+                'weapons': {
+                    'daggers', 'darts', 'slings', 'quarterstaff', 'light crossbows',
+                },
+                'tools': set(),
+                'saving throws': {
+                    'Int', 'Wis',
+                },
+                # choose two randomly
+                'skills': {
+                    'Arcana', 'History', 'Insight', 'Investigation', 'Medicine', 'Religion',
+                },
+            },
+            'traits': 'Arcane Recovery'
+            # choose one randomly
+            'Arcane Tradition': {
+                'School of Abjuration': 'Abjuration Savant',
+                'School of Conjuration': 'Conjuration Savant',
+                'School of Divination': 'Divination Savant',
+                'School of Enchantment': 'Enchantment Savant',
+                'School of Evocation': 'Evocation Savant',
+                'School of Illusion': 'Illusion Savant',
+                'School of Necromancy': 'Necromancy Savant',
+                'School of Transmutation': 'Transmutation Savant',
+            },
+            'spells and cantrips': {
+                'cantrips known': 3,
+                'spells known': 2,,
+            }
         },
     ]
     char_class = random.choice(classes)
