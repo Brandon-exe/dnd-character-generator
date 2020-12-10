@@ -49,7 +49,26 @@ def get_background():
                     '''I am inflexible in my thinking.''',
                     '''I am suspicious of strangers and expect the worst of them.''',
                     '''Once I pick a goal, I become obsessed with it to the detriment of everything else in my life.''',
-                }
+                },
+            },
+        },
+        {
+            'name': 'Charlatan',
+            'proficiencies': {
+                'skills': {
+                    'Deception', 'Slight of Hand',
+                },
+                'tools': {
+                    'disguise kit', 'forgery kit',
+                },
+            },
+            'favorite scam': {
+                '''I cheat at games of chance.''',
+                '''I shave coins or forge documents.''',
+                '''I insinuate myself into people's lives to prey on their weakness and secure their fortunes.''',
+                '''I put on new identities like clothes''',
+                '''I run sleight-of-hand cons on street corners''',
+                '''I convince people that worthless junk is worth their hard-earned money.''',
             },
         },
     ]
