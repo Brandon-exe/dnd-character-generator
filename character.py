@@ -23,9 +23,8 @@ class Character:
         self.sex = random.choice(['Male', 'Female'])
         self.age = random.choice(self.age_range)
         self.height = random.choice(self.height_range)
-        self.speed = speed
         self.alignment = random.choice(alignment)
-        self.languages = ['Common']
+        self.languages = {'Common'}
         self.features = set()
         self.armor_proficiencies = set()
         self.weapon_proficiencies = set()
@@ -37,19 +36,19 @@ class Character:
         self.equipment = set()
         self.stats = dict(zip(['Str', 'Con', 'Dex', 'Int', 'Wis', 'Cha'], stats()))
 
-
 class Dwarf(Character):
     race_name = 'Dwarf'
     age_range = range(50, 350)
     height_range = range(48, 60)
+    weight_range = range(100, 200)
     speed = 25
 
     def __init__(self):
         super().__init__()
         self.languages.add('Dwarvish')
-        self.weapon_proficiencies.add('battleaxe', 'handaxe', 'light hammer', 'warhammer')
+        self.weapon_proficiencies |= {'battleaxe', 'handaxe', 'light hammer', 'warhammer'}
         self.tool_proficiencies.add(random.choice(['smith tools', 'brewer supplies', 'mason tools']))
-        self.features.add('Darkvision', 'Dwarven Resillience', 'Stonecunning')
+        self.features |= {'Darkvision', 'Dwarven Resillience', 'Stonecunning'}
         self.stats['Con'] += 2
 
 class HillDwarf(Dwarf):
@@ -65,7 +64,7 @@ class MountainDwarf(Dwarf):
 
     def __init__(self):
         super().__init__()
-        self.armor_proficienies.add('light armor', 'medium armor')
+        self.armor_proficienies |= {'light armor', 'medium armor'}
         self.stats['Str'] += 2
 
 class Elf(Character):
@@ -77,7 +76,7 @@ class Elf(Character):
 
     def __init__(self):
         super().__init__()
-        self.features.add('Darkvision', 'Fey Ancestry', 'Trance')
+        self.features |= {'Darkvision', 'Fey Ancestry', 'Trance'}
         self.languages.add('Elvish')
         self.skill_proficiencies.add('Perception')
         self.stats['Dex'] += 2
@@ -88,7 +87,7 @@ class HighElf(Elf):
     def __init__(self):
         super().__init__()
         self.stats['Int'] += 1
-        self.weapon_proficiencies.add('longsword', 'shortsword', 'shortbow', 'longbow')
+        self.weapon_proficiencies |= {'longsword', 'shortsword', 'shortbow', 'longbow'}
         self.features.add('Cantrip')
         self.languages.add(random.choice(languages))
 
@@ -99,7 +98,7 @@ class WoodElf(Elf):
     def __init__(self):
         super.__init__()
         self.stats['Wis'] += 1
-        self.weapon_proficiencies.add('longsword', 'shortsword', 'shortbow', 'longbow')
+        self.weapon_proficiencies |= {'longsword', 'shortsword', 'shortbow', 'longbow'}
         self.features.add('Mask of the Wild')
 
 class Drow(Elf):
@@ -108,8 +107,8 @@ class Drow(Elf):
     def __init__(self):
         super.__init__()
         self.stats['Cha'] += 1
-        self.features.add('Superior Darkvision', 'Sunlight Sensitivity', 'Drow Magic')
-        self.weapon_proficiencies.add('rapier', 'shortsword', 'hand crossbow')
+        self.features |= {'Superior Darkvision', 'Sunlight Sensitivity', 'Drow Magic'}
+        self.weapon_proficiencies |= {'rapier', 'shortsword', 'hand crossbow'}
 
 class Halfling(Character):
     race_name = 'Halfling'
@@ -119,7 +118,7 @@ class Halfling(Character):
     speed = 25
 
     def __init__(self):
-        self.features.add('Lucky', 'Brave', 'Halfling Nimbleness')
+        self.features |= {'Lucky', 'Brave', 'Halfling Nimbleness'}
         self.languages.add('Halfling')
         self.stats['Dex'] += 2
 
@@ -159,7 +158,7 @@ class Dragonborn(Character):
         self.languages.add('Draconic')
         self.stats['Str'] += 2
         self.stats['Cha'] += 1
-        self.features.add('Breath Weapon', 'Damage Resistance')
+        self.features |= {'Breath Weapon', 'Damage Resistance'}
         self.ancestry = random.choice([
             'Black', 'Blue', 'Brass', 'Bronze', 'Copper', 'Gold', 'Green', 'Red', 'Silver', 'White'
         ])
@@ -174,21 +173,21 @@ class Gnome(Character):
     def __init__(self):
         self.languages.add('Gnomish')
         self.stats['Int'] += 2
-        self.features.add('Darkvision', 'Gnome Cunning')
+        self.features |= {'Darkvision', 'Gnome Cunning'}
 
 class ForestGnome(Gnome):
     race_name = 'Forest Gnome'
 
     def __init__(self):
         self.stats['Dex'] += 1
-        self.features.add('Natural Illusionist', 'Speak With Small Beasts')
+        self.features |= {'Natural Illusionist', 'Speak With Small Beasts'}
 
 class RockGnome(Gnome):
     race_name = 'Rock Gnome'
 
     def __init__(self):
         self.stats['Con'] += 1
-        self.features.add('Artificers Lore', 'Tinker')
+        self.features |= {'Artificers Lore', 'Tinker'}
         self.tool_proficiencies.add('tinkers tools')
 
 class HalfElf(Character):
@@ -202,7 +201,7 @@ class HalfElf(Character):
         self.languages.add('Elvish')
         self.stats['Cha'] += 2
         self.stats(random.sample(['Str', 'Dex', 'Con', 'Int', 'Wis',], 2)) += 1
-        self.featrues.add('Darkvision', 'Fey Ancestry')
+        self.featrues |= {'Darkvision', 'Fey Ancestry'}
         self.skill_proficiencies.add(random.sample(['Athletics', 'Acrobatics', 'Sleight of Hand', 'Stealth', 'Arcana', 'History', 'Investigation', 
         'Nature', 'Nature', 'Religion', 'Animal Handling' 'Insight', 'Medicine', 'Perception', 'Survival', 'Deception', 
         'Intimidation', 'Performance', 'Persuasion'], 2))
@@ -218,7 +217,7 @@ class HalfOrc(Character):
         self.languages.add('Orc')
         self.stats['Str'] += 2
         self.stats['Con'] += 1
-        self.features.add('Darkvision', 'Menacing', 'Relentless Endurance', 'Savage Attacks')
+        self.features |= {'Darkvision', 'Menacing', 'Relentless Endurance', 'Savage Attacks'}
         self.skill_proficiancies.add('Intimidation')
 
 class Tiefling(Character):
@@ -232,4 +231,4 @@ class Tiefling(Character):
         self.languages.add('Infernal')
         self.stats['Cha'] += 2
         self.stats['Int'] += 1
-        self.features.add('Darkvision', 'Hellish Resistance', 'Infernal Legacy')
+        self.features |= {'Darkvision', 'Hellish Resistance', 'Infernal Legacy'}

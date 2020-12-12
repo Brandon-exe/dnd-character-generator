@@ -90,7 +90,7 @@ def get_class():
                     'traits': {
                         'Disciple of Life',
                     },
-                        # add to proficiency list
+                    # add to proficiency list
                     'bonus proficiency': 'heavy armor',
                     'domain spells': {
                         'bless', 'cure wounds',
