@@ -65,7 +65,7 @@ class MountainDwarf(Dwarf):
 
     def __init__(self):
         super().__init__()
-        self.armor_proficienies |= {'light armor', 'medium armor'}
+        self.armor_proficiencies |= {'light armor', 'medium armor'}
         self.stats['Str'] += 2
 
 class Elf(Character):
@@ -97,7 +97,7 @@ class WoodElf(Elf):
     speed = 35
 
     def __init__(self):
-        super.__init__()
+        super().__init__()
         self.stats['Wis'] += 1
         self.weapon_proficiencies |= {'longsword', 'shortsword', 'shortbow', 'longbow'}
         self.features.add('Mask of the Wild')
@@ -106,7 +106,7 @@ class Drow(Elf):
     race_name = 'Drow'
 
     def __init__(self):
-        super.__init__()
+        super().__init__()
         self.stats['Cha'] += 1
         self.features |= {'Superior Darkvision', 'Sunlight Sensitivity', 'Drow Magic'}
         self.weapon_proficiencies |= {'rapier', 'shortsword', 'hand crossbow'}
@@ -119,7 +119,7 @@ class Halfling(Character):
     speed = 25
 
     def __init__(self):
-        super.__init__()
+        super().__init__()
         self.features |= {'Lucky', 'Brave', 'Halfling Nimbleness'}
         self.languages.add('Halfling')
         self.stats['Dex'] += 2
@@ -128,7 +128,7 @@ class LightfootHalfling(Halfling):
     race_name = 'Lightfoot Halfling'
 
     def __init__(self):
-        super.__init__()
+        super().__init__()
         self.stats['Cha'] += 1
         self.features.add('Naturally Stealthy')
 
@@ -136,7 +136,7 @@ class StoutHalfling(Halfling):
     race_name = 'Stout Halfling'
 
     def __init__(self):
-        super.__init__()
+        super().__init__()
         self.stats['Con'] += 1
         self.features.add('Stout Resillience')
 
@@ -148,8 +148,9 @@ class Human(Character):
     speed = 30
 
     def __init__(self):
-        super.__init__()
-        self.stats['Str', 'Dex', 'Con', 'Int', 'Wis', 'Cha',] += 1
+        super().__init__()
+        for stat in ['Str', 'Dex', 'Con', 'Int', 'Wis', 'Cha']:
+            self.stats[stat] += 1
         self.languages.add(random.choice(languages))
 
 class Dragonborn(Character):
@@ -160,7 +161,7 @@ class Dragonborn(Character):
     speed = 30
 
     def __init__(self):
-        super.__init__()
+        super().__init__()
         self.languages.add('Draconic')
         self.stats['Str'] += 2
         self.stats['Cha'] += 1
@@ -177,7 +178,7 @@ class Gnome(Character):
     speed = 25
 
     def __init__(self):
-        super.__init__()
+        super().__init__()
         self.languages.add('Gnomish')
         self.stats['Int'] += 2
         self.features |= {'Darkvision', 'Gnome Cunning'}
@@ -186,7 +187,7 @@ class ForestGnome(Gnome):
     race_name = 'Forest Gnome'
 
     def __init__(self):
-        super.__init__()
+        super().__init__()
         self.stats['Dex'] += 1
         self.features |= {'Natural Illusionist', 'Speak With Small Beasts'}
 
@@ -194,7 +195,7 @@ class RockGnome(Gnome):
     race_name = 'Rock Gnome'
 
     def __init__(self):
-        super.__init__()
+        super().__init__()
         self.stats['Con'] += 1
         self.features |= {'Artificers Lore', 'Tinker'}
         self.tool_proficiencies.add('tinkers tools')
@@ -207,10 +208,13 @@ class HalfElf(Character):
     speed = 30
 
     def __init__(self):
-        super.__init__()
+        super().__init__()
         self.languages.add('Elvish')
         self.stats['Cha'] += 2
-        self.stats(random.sample(['Str', 'Dex', 'Con', 'Int', 'Wis',], 2)) += 1
+        # Increase two random stats by 1
+        for stat in random.sample(['Str', 'Dex', 'Con', 'Int', 'Wis',], 2):
+            self.stats[stat] += 1
+
         self.featrues |= {'Darkvision', 'Fey Ancestry'}
         self.skill_proficiencies.add(random.sample(proficiency, 2))
 
@@ -222,12 +226,12 @@ class HalfOrc(Character):
     speed = 30
 
     def __init__(self):
-        super.__init__()
+        super().__init__()
         self.languages.add('Orc')
         self.stats['Str'] += 2
         self.stats['Con'] += 1
         self.features |= {'Darkvision', 'Menacing', 'Relentless Endurance', 'Savage Attacks'}
-        self.skill_proficiancies.add('Intimidation')
+        self.skill_proficiencies.add('Intimidation')
 
 class Tiefling(Character):
     race_name = 'Tiefling'
@@ -237,8 +241,29 @@ class Tiefling(Character):
     speed = 30
 
     def __init__(self):
-        super.__init__()
+        super().__init__()
         self.languages.add('Infernal')
         self.stats['Cha'] += 2
         self.stats['Int'] += 1
         self.features |= {'Darkvision', 'Hellish Resistance', 'Infernal Legacy'}
+
+races = [
+    Dwarf,
+    HillDwarf,
+    MountainDwarf,
+    Elf,
+    HighElf,
+    WoodElf,
+    Drow,
+    Halfling,
+    LightfootHalfling,
+    StoutHalfling,
+    Human,
+    Dragonborn,
+    Gnome,
+    ForestGnome,
+    RockGnome,
+    HalfElf,
+    HalfOrc,
+    Tiefling,
+]

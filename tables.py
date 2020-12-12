@@ -33,7 +33,9 @@ armor = [
         'heavy armor': {
             'ring mail', 'chain mail', 'splint', 'plate',
         },
-        'shield',
+        'shield': {
+            'shield',
+        }
     },
 ]
 
