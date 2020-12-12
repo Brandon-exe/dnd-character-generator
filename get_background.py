@@ -3,16 +3,6 @@ from random import randint
 from random import sample
 
 def get_background():
-    
-    allignment = [
-        'Lawful Good', 'Neutral Good', 'Chaotic Good', 'Lawful Good', 'Neutral', 
-        'Chaotic Neutral', 'Lawful Evil', 'Neutral Evil', 'Chaotic Evil',
-    ]
-
-    languages = [
-        'Common', 'Dwarvish', 'Elvish', 'Giant', 'Gnomish', 'Goblin', 'Halfling', 'Orc', 'Abyssal', 
-        'Celestial', 'Deep Speech', 'Draconic', 'Infernal', 'Primordial', 'Sylvan', 'Undercommon',
-    ]
 
     backgrounds = [
         {

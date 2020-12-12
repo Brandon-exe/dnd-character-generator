@@ -245,6 +245,14 @@ def get_race(stat_dict):
             # need randomized +1 in 2 other ability scores
             'bonuses': {
                 'Cha': 2,
+                'random bonus': {
+                    'Str': 1,
+                    'Dex': 1,
+                    'Con': 1,
+                    'Int': 1,
+                    'Wis': 1,
+                    'Cha': 1,
+                }
             },
             'traits': {
                 'Darkvision', 'Fey Ancestry',
