@@ -3,6 +3,7 @@ from random import randint
 from random import sample
 from tables import alignment
 from tables import languages
+from tables import proficiency
 
 # rolling the 4d6 for your stat
 def roll_stat():
@@ -211,9 +212,7 @@ class HalfElf(Character):
         self.stats['Cha'] += 2
         self.stats(random.sample(['Str', 'Dex', 'Con', 'Int', 'Wis',], 2)) += 1
         self.featrues |= {'Darkvision', 'Fey Ancestry'}
-        self.skill_proficiencies.add(random.sample(['Athletics', 'Acrobatics', 'Sleight of Hand', 'Stealth', 'Arcana', 'History', 'Investigation', 
-        'Nature', 'Nature', 'Religion', 'Animal Handling' 'Insight', 'Medicine', 'Perception', 'Survival', 'Deception', 
-        'Intimidation', 'Performance', 'Persuasion'], 2))
+        self.skill_proficiencies.add(random.sample(proficiency, 2))
 
 class HalfOrc(Character):
     race_name = 'Half Orc'
