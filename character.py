@@ -248,19 +248,15 @@ class Tiefling(Character):
         self.features |= {'Darkvision', 'Hellish Resistance', 'Infernal Legacy'}
 
 races = [
-    Dwarf,
     HillDwarf,
     MountainDwarf,
-    Elf,
     HighElf,
     WoodElf,
     Drow,
-    Halfling,
     LightfootHalfling,
     StoutHalfling,
     Human,
     Dragonborn,
-    Gnome,
     ForestGnome,
     RockGnome,
     HalfElf,
