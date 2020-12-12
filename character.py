@@ -118,6 +118,7 @@ class Halfling(Character):
     speed = 25
 
     def __init__(self):
+        super.__init__()
         self.features |= {'Lucky', 'Brave', 'Halfling Nimbleness'}
         self.languages.add('Halfling')
         self.stats['Dex'] += 2
@@ -126,6 +127,7 @@ class LightfootHalfling(Halfling):
     race_name = 'Lightfoot Halfling'
 
     def __init__(self):
+        super.__init__()
         self.stats['Cha'] += 1
         self.features.add('Naturally Stealthy')
 
@@ -133,6 +135,7 @@ class StoutHalfling(Halfling):
     race_name = 'Stout Halfling'
 
     def __init__(self):
+        super.__init__()
         self.stats['Con'] += 1
         self.features.add('Stout Resillience')
 
@@ -144,6 +147,7 @@ class Human(Character):
     speed = 30
 
     def __init__(self):
+        super.__init__()
         self.stats['Str', 'Dex', 'Con', 'Int', 'Wis', 'Cha',] += 1
         self.languages.add(random.choice(languages))
 
@@ -155,6 +159,7 @@ class Dragonborn(Character):
     speed = 30
 
     def __init__(self):
+        super.__init__()
         self.languages.add('Draconic')
         self.stats['Str'] += 2
         self.stats['Cha'] += 1
@@ -171,6 +176,7 @@ class Gnome(Character):
     speed = 25
 
     def __init__(self):
+        super.__init__()
         self.languages.add('Gnomish')
         self.stats['Int'] += 2
         self.features |= {'Darkvision', 'Gnome Cunning'}
@@ -179,6 +185,7 @@ class ForestGnome(Gnome):
     race_name = 'Forest Gnome'
 
     def __init__(self):
+        super.__init__()
         self.stats['Dex'] += 1
         self.features |= {'Natural Illusionist', 'Speak With Small Beasts'}
 
@@ -186,6 +193,7 @@ class RockGnome(Gnome):
     race_name = 'Rock Gnome'
 
     def __init__(self):
+        super.__init__()
         self.stats['Con'] += 1
         self.features |= {'Artificers Lore', 'Tinker'}
         self.tool_proficiencies.add('tinkers tools')
@@ -198,6 +206,7 @@ class HalfElf(Character):
     speed = 30
 
     def __init__(self):
+        super.__init__()
         self.languages.add('Elvish')
         self.stats['Cha'] += 2
         self.stats(random.sample(['Str', 'Dex', 'Con', 'Int', 'Wis',], 2)) += 1
@@ -214,6 +223,7 @@ class HalfOrc(Character):
     speed = 30
 
     def __init__(self):
+        super.__init__()
         self.languages.add('Orc')
         self.stats['Str'] += 2
         self.stats['Con'] += 1
@@ -228,6 +238,7 @@ class Tiefling(Character):
     speed = 30
 
     def __init__(self):
+        super.__init__()
         self.languages.add('Infernal')
         self.stats['Cha'] += 2
         self.stats['Int'] += 1
