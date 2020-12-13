@@ -1,11 +1,11 @@
 import random
 import pprint
-from random import randint
-from character import races
+import character
+import classes
 
 # Choose a character race class
 race = random.choice(races)
-class_ = random.choice(classes)
+class_ = random.choice(classes.classes)
 
 # Actually construct the character
 character = race()
