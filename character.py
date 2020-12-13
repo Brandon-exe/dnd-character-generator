@@ -1,9 +1,6 @@
 import random
-from random import randint
-from random import sample
-from tables import alignment
-from tables import languages
-from tables import proficiency
+import tables
+import classes
 
 # rolling the 4d6 for your stat
 def roll_stat():
@@ -24,9 +21,10 @@ class Character:
         self.sex = random.choice(['Male', 'Female'])
         self.age = random.choice(self.age_range)
         self.height = random.choice(self.height_range)
-        self.alignment = random.choice(alignment)
+        self.alignment = random.choice(tables.alignment)
         self.languages = {'Common'}
-        self.features = set()
+        self.racial_features = set()
+        self.class_features = set()
         self.armor_proficiencies = set()
         self.weapon_proficiencies = set()
         self.tool_proficiencies = set()
@@ -47,9 +45,9 @@ class Dwarf(Character):
     def __init__(self):
         super().__init__()
         self.languages.add('Dwarvish')
-        self.weapon_proficiencies |= {'battleaxe', 'handaxe', 'light hammer', 'warhammer'}
+        self.weapon_proficiencies |= {'battleaxes', 'handaxes', 'light hammers', 'warhammers'}
         self.tool_proficiencies.add(random.choice(['smith tools', 'brewer supplies', 'mason tools']))
-        self.features |= {'Darkvision', 'Dwarven Resillience', 'Stonecunning'}
+        self.racial_features |= {'Darkvision', 'Dwarven Resillience', 'Stonecunning'}
         self.stats['Con'] += 2
 
 class HillDwarf(Dwarf):
@@ -57,7 +55,7 @@ class HillDwarf(Dwarf):
 
     def __init__(self):
         super().__init__()
-        self.features.add('Dwarven Toughness')
+        self.racial_features.add('Dwarven Toughness')
         self.stats['Wis'] += 1
 
 class MountainDwarf(Dwarf):
@@ -77,7 +75,7 @@ class Elf(Character):
 
     def __init__(self):
         super().__init__()
-        self.features |= {'Darkvision', 'Fey Ancestry', 'Trance'}
+        self.racial_features |= {'Darkvision', 'Fey Ancestry', 'Trance'}
         self.languages.add('Elvish')
         self.skill_proficiencies.add('Perception')
         self.stats['Dex'] += 2
@@ -88,9 +86,9 @@ class HighElf(Elf):
     def __init__(self):
         super().__init__()
         self.stats['Int'] += 1
-        self.weapon_proficiencies |= {'longsword', 'shortsword', 'shortbow', 'longbow'}
-        self.features.add('Cantrip')
-        self.languages.add(random.choice(languages))
+        self.weapon_proficiencies |= {'longswords', 'shortswords', 'shortbows', 'longbows'}
+        self.racial_features.add('Cantrip')
+        self.languages.add(random.choice(tables.languages))
 
 class WoodElf(Elf):
     race_name = 'Wood Elf'
@@ -99,8 +97,8 @@ class WoodElf(Elf):
     def __init__(self):
         super().__init__()
         self.stats['Wis'] += 1
-        self.weapon_proficiencies |= {'longsword', 'shortsword', 'shortbow', 'longbow'}
-        self.features.add('Mask of the Wild')
+        self.weapon_proficiencies |= {'longswords', 'shortswords', 'shortbows', 'longbows'}
+        self.racial_features.add('Mask of the Wild')
 
 class Drow(Elf):
     race_name = 'Drow'
@@ -108,8 +106,8 @@ class Drow(Elf):
     def __init__(self):
         super().__init__()
         self.stats['Cha'] += 1
-        self.features |= {'Superior Darkvision', 'Sunlight Sensitivity', 'Drow Magic'}
-        self.weapon_proficiencies |= {'rapier', 'shortsword', 'hand crossbow'}
+        self.racial_features |= {'Superior Darkvision', 'Sunlight Sensitivity', 'Drow Magic'}
+        self.weapon_proficiencies |= {'rapiers', 'shortswords', 'hand crossbows'}
 
 class Halfling(Character):
     race_name = 'Halfling'
@@ -120,7 +118,7 @@ class Halfling(Character):
 
     def __init__(self):
         super().__init__()
-        self.features |= {'Lucky', 'Brave', 'Halfling Nimbleness'}
+        self.racial_features |= {'Lucky', 'Brave', 'Halfling Nimbleness'}
         self.languages.add('Halfling')
         self.stats['Dex'] += 2
 
@@ -130,7 +128,7 @@ class LightfootHalfling(Halfling):
     def __init__(self):
         super().__init__()
         self.stats['Cha'] += 1
-        self.features.add('Naturally Stealthy')
+        self.racial_features.add('Naturally Stealthy')
 
 class StoutHalfling(Halfling):
     race_name = 'Stout Halfling'
@@ -138,7 +136,7 @@ class StoutHalfling(Halfling):
     def __init__(self):
         super().__init__()
         self.stats['Con'] += 1
-        self.features.add('Stout Resillience')
+        self.racial_features.add('Stout Resillience')
 
 class Human(Character):
     race_name = 'Human'
@@ -151,7 +149,7 @@ class Human(Character):
         super().__init__()
         for stat in ['Str', 'Dex', 'Con', 'Int', 'Wis', 'Cha']:
             self.stats[stat] += 1
-        self.languages.add(random.choice(languages))
+        self.languages.add(random.choice(tables.languages))
 
 class Dragonborn(Character):
     race_name = 'Dragonborn'
@@ -165,7 +163,7 @@ class Dragonborn(Character):
         self.languages.add('Draconic')
         self.stats['Str'] += 2
         self.stats['Cha'] += 1
-        self.features |= {'Breath Weapon', 'Damage Resistance'}
+        self.racial_features |= {'Breath Weapon', 'Damage Resistance'}
         self.ancestry = random.choice([
             'Black', 'Blue', 'Brass', 'Bronze', 'Copper', 'Gold', 'Green', 'Red', 'Silver', 'White'
         ])
@@ -181,7 +179,7 @@ class Gnome(Character):
         super().__init__()
         self.languages.add('Gnomish')
         self.stats['Int'] += 2
-        self.features |= {'Darkvision', 'Gnome Cunning'}
+        self.racial_features |= {'Darkvision', 'Gnome Cunning'}
 
 class ForestGnome(Gnome):
     race_name = 'Forest Gnome'
@@ -189,7 +187,7 @@ class ForestGnome(Gnome):
     def __init__(self):
         super().__init__()
         self.stats['Dex'] += 1
-        self.features |= {'Natural Illusionist', 'Speak With Small Beasts'}
+        self.racial_features |= {'Natural Illusionist', 'Speak With Small Beasts'}
 
 class RockGnome(Gnome):
     race_name = 'Rock Gnome'
@@ -197,7 +195,7 @@ class RockGnome(Gnome):
     def __init__(self):
         super().__init__()
         self.stats['Con'] += 1
-        self.features |= {'Artificers Lore', 'Tinker'}
+        self.racial_features |= {'Artificers Lore', 'Tinker'}
         self.tool_proficiencies.add('tinkers tools')
 
 class HalfElf(Character):
@@ -216,7 +214,7 @@ class HalfElf(Character):
             self.stats[stat] += 1
 
         self.featrues |= {'Darkvision', 'Fey Ancestry'}
-        self.skill_proficiencies.add(random.sample(proficiency, 2))
+        self.skill_proficiencies |= set(random.sample(tables.proficiency, 2))
 
 class HalfOrc(Character):
     race_name = 'Half Orc'
@@ -230,7 +228,7 @@ class HalfOrc(Character):
         self.languages.add('Orc')
         self.stats['Str'] += 2
         self.stats['Con'] += 1
-        self.features |= {'Darkvision', 'Menacing', 'Relentless Endurance', 'Savage Attacks'}
+        self.racial_features |= {'Darkvision', 'Menacing', 'Relentless Endurance', 'Savage Attacks'}
         self.skill_proficiencies.add('Intimidation')
 
 class Tiefling(Character):
@@ -245,7 +243,7 @@ class Tiefling(Character):
         self.languages.add('Infernal')
         self.stats['Cha'] += 2
         self.stats['Int'] += 1
-        self.features |= {'Darkvision', 'Hellish Resistance', 'Infernal Legacy'}
+        self.racial_features |= {'Darkvision', 'Hellish Resistance', 'Infernal Legacy'}
 
 races = [
     HillDwarf,
