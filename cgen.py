@@ -4,7 +4,7 @@ import character
 import classes
 
 # Choose a character race class
-race = random.choice(races)
+race = random.choice(character.races)
 class_ = random.choice(classes.classes)
 
 # Actually construct the character
