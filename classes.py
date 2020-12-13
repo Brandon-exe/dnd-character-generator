@@ -104,7 +104,7 @@ class Fighter(Class):
         super().__init__()
         self.armor_proficiencies |= {'light armor', 'medium armor', 'heavy armor', 'sheilds'}
         self.weapon_proficiencies |= {'simple weapons', 'martial weapons'}
-        self.skill_proficiencies set(random.sample(['Acrobatics', 'Animal Handling', 'Athletics', 'History', 'Insight', 'Intimidation', 'Preception', 'Survival'], 2))
+        self.skill_proficiencies |= set(random.sample(['Acrobatics', 'Animal Handling', 'Athletics', 'History', 'Insight', 'Intimidation', 'Preception', 'Survival'], 2))
         self.save_throws |= {'Str', 'Con'}
         self.class_features.add('Second Wind')
         self.fighting_style = random.choice(tables.fighter_styles)
