@@ -2,6 +2,7 @@ import random
 import pprint
 import character
 import classes
+import tables
 
 # Choose a character race class
 race = random.choice(character.races)
