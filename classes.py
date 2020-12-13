@@ -44,11 +44,18 @@ class Cleric(Class):
         self.weapon_proficiencies.add('simple weapons')
         self.skill_proficiencies |= set(random.sample(tables.proficiency, 2))
         self.save_throws |= {'Wis', 'Cha'}
+        self.class_features.add('Channel Divinity')
         self.cantrips |= set(random.sample(tables.cleric_cantrips, 3))
         self.spells |= set(random.sample(tables.cleric_lvl1_spells, 2))
-        self.domain = random.choice(['Divine Cleric', 'Light Cleric', 'Nature Cleric', 'Tempest Cleric', 'Trickery Cleric', 'War Cleric'])
+        self.domain = random.choice(['Knowledge Cleric', 'Divine Cleric', 'Light Cleric', 'Nature Cleric', 'Tempest Cleric', 'Trickery Cleric', 'War Cleric'])
 
-        if self.domain == 'Divine Cleric':
+        if self.domain == 'Knowledge Cleric':
+            self.class_features.add('Bleesings of Knowledge')
+            self.languages |= set(random.sample(tables.languages, 2))
+            self.skill_proficiencies |= set(random.sample(['Arcana', 'History', 'Nature', 'Religion'], 2))
+            self.spells |= {'Command', 'Identify'}
+        
+        elif self.domain == 'Divine Cleric':
             self.class_features.add('Disciple of Life')
             self.armor_proficiencies.add('heavy armor')
             self.spells |= {'Bless', 'Cure Wounds'}
