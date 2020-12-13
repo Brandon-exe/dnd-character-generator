@@ -206,34 +206,10 @@ class Wizard(Class):
         self.skill_proficiencies |= set(random.sample(['Arcana', 'History', 'Insight', 'Investigation', 'Medicine', 'Religion'], 2))
         self.save_throw |= {'Int', 'Wis'}
         self.class_features.add('Arcane Recovery')
-        self.arcane_tradition = random.choice(['School of Abjuration', 'School of Conjuration', 'School of Divination', 'School of Enchantment'
-        'School of Evocation', 'School of Illusion', 'School of Necromancy', 'School of Transmutation'])
+        self.arcane_tradition = random.choice(['School of Abjuration', 'School of Conjuration', 'School of Divination', 'School of Enchantment' 'School of Evocation', 'School of Illusion', 'School of Necromancy', 'School of Transmutation'])
 
-        if self.arcane_tradition == 'School of Abjuration':
-            self.class_features.add('Abjuration Savant')
-
-        if self.arcane_tradition == 'School of Conjuration':
-            self.class_features.add('Conjuration Savant')
-
-        if self.arcane_tradition == 'School of Divination':
-            self.class_features.add('Divination Savant')
-
-        if self.arcane_tradition == 'School of Enchantment':
-            self.class_features.add('Enchantment Savant')
-
-        if self.arcane_tradition == 'School of Evocation':
-            self.class_features.add('Evocation Savant')
-
-        if self.arcane_tradition == 'School of Illusion':
-            self.class_features.add('Illusion Savant')
-
-        if self.arcane_tradition == 'School of Necromancy':
-            self.class_features.add('Necromancy Savant')
-        
-        if self.arcane_tradition == 'School of Transmutation':
-            self.class_features.add('Transmutation Savant')
-        
-
+        school = self.arcane_tradition.split()[-1]
+        self.class_features.add(f'{school} Savant')
 
 classes = [
     Barbarian,
