@@ -218,7 +218,7 @@ class Wizard(Class):
         school = self.arcane_tradition.split()[-1]
         self.class_features.add(f'{school} Savant')
 
-classes = [
+class_list = [
     Barbarian,
     Bard,
     Cleric,

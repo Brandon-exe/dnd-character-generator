@@ -1,7 +1,7 @@
 import random
 import tables
 import classes
-
+        
 # rolling the 4d6 for your stat
 def roll_stat():
     stat_rolls = 4
@@ -33,7 +33,7 @@ class Character:
         self.cantrips = set()
         self.spells = set()
         self.equipment = set()
-        self.stats = dict(zip(['Str', 'Con', 'Dex', 'Int', 'Wis', 'Cha'], stats()))
+        self.stats = dict(zip(['Str', 'Con', 'Dex', 'Int', 'Wis', 'Cha'], stats())
 
 class Dwarf(Character):
     race_name = 'Dwarf'
@@ -213,7 +213,7 @@ class HalfElf(Character):
         for stat in random.sample(['Str', 'Dex', 'Con', 'Int', 'Wis',], 2):
             self.stats[stat] += 1
 
-        self.featrues |= {'Darkvision', 'Fey Ancestry'}
+        self.racial_features |= {'Darkvision', 'Fey Ancestry'}
         self.skill_proficiencies |= set(random.sample(tables.proficiency, 2))
 
 class HalfOrc(Character):
