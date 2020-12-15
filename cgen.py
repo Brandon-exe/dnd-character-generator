@@ -9,7 +9,7 @@ race = random.choice(character.races)
 class_ = random.choice(classes.class_list)
 
 # Actually construct the character
-character = race()
+character = race(class_)
 character_class = class_()
 print('stats: ', end='')
 

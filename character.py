@@ -17,7 +17,7 @@ def stats():
     return all_stats
 
 class Character:
-    def __init__(self):
+    def __init__(self, class_):
         self.sex = random.choice(['Male', 'Female'])
         self.age = random.choice(self.age_range)
         self.height = random.choice(self.height_range)
@@ -33,7 +33,7 @@ class Character:
         self.cantrips = set()
         self.spells = set()
         self.equipment = set()
-        self.stats = dict(zip(['Str', 'Con', 'Dex', 'Int', 'Wis', 'Cha'], stats())
+        self.stats = dict(zip(['Str', 'Con', 'Dex', 'Int', 'Wis', 'Cha'], stats()))
 
 class Dwarf(Character):
     race_name = 'Dwarf'
@@ -42,8 +42,8 @@ class Dwarf(Character):
     weight_range = range(100, 200)
     speed = 25
 
-    def __init__(self):
-        super().__init__()
+    def __init__(self, class_):
+        super().__init__(class_)
         self.languages.add('Dwarvish')
         self.weapon_proficiencies |= {'battleaxes', 'handaxes', 'light hammers', 'warhammers'}
         self.tool_proficiencies.add(random.choice(['smith tools', 'brewer supplies', 'mason tools']))
@@ -53,16 +53,16 @@ class Dwarf(Character):
 class HillDwarf(Dwarf):
     race_name = 'Hill Dwarf'
 
-    def __init__(self):
-        super().__init__()
+    def __init__(self, class_):
+        super().__init__(class_)
         self.racial_features.add('Dwarven Toughness')
         self.stats['Wis'] += 1
 
 class MountainDwarf(Dwarf):
     race_name = 'Mountain Dwarf'
 
-    def __init__(self):
-        super().__init__()
+    def __init__(self, class_):
+        super().__init__(class_)
         self.armor_proficiencies |= {'light armor', 'medium armor'}
         self.stats['Str'] += 2
 
@@ -73,8 +73,8 @@ class Elf(Character):
     weight_range = range(100, 150)
     speed = 30
 
-    def __init__(self):
-        super().__init__()
+    def __init__(self, class_):
+        super().__init__(class_)
         self.racial_features |= {'Darkvision', 'Fey Ancestry', 'Trance'}
         self.languages.add('Elvish')
         self.skill_proficiencies.add('Perception')
@@ -83,8 +83,8 @@ class Elf(Character):
 class HighElf(Elf):
     race_name = 'High Elf'
 
-    def __init__(self):
-        super().__init__()
+    def __init__(self, class_):
+        super().__init__(class_)
         self.stats['Int'] += 1
         self.weapon_proficiencies |= {'longswords', 'shortswords', 'shortbows', 'longbows'}
         self.racial_features.add('Cantrip')
@@ -94,8 +94,8 @@ class WoodElf(Elf):
     race_name = 'Wood Elf'
     speed = 35
 
-    def __init__(self):
-        super().__init__()
+    def __init__(self, class_):
+        super().__init__(class_)
         self.stats['Wis'] += 1
         self.weapon_proficiencies |= {'longswords', 'shortswords', 'shortbows', 'longbows'}
         self.racial_features.add('Mask of the Wild')
@@ -103,10 +103,10 @@ class WoodElf(Elf):
 class Drow(Elf):
     race_name = 'Drow'
 
-    def __init__(self):
-        super().__init__()
+    def __init__(self, class_):
+        super().__init__(class_)
         self.stats['Cha'] += 1
-        self.racial_features |= {'Superior Darkvision', 'Sunlight Sensitivity', 'Drow Magic'}
+        self.racial_features |= {'Superior Darkvisiclass_on', 'Sunlight Sensitivity', 'Drow Magic'}
         self.weapon_proficiencies |= {'rapiers', 'shortswords', 'hand crossbows'}
 
 class Halfling(Character):
@@ -116,8 +116,8 @@ class Halfling(Character):
     weight_range = range(20, 50)
     speed = 25
 
-    def __init__(self):
-        super().__init__()
+    def __init__(self, class_):
+        super().__init__(class_)
         self.racial_features |= {'Lucky', 'Brave', 'Halfling Nimbleness'}
         self.languages.add('Halfling')
         self.stats['Dex'] += 2
@@ -125,16 +125,16 @@ class Halfling(Character):
 class LightfootHalfling(Halfling):
     race_name = 'Lightfoot Halfling'
 
-    def __init__(self):
-        super().__init__()
+    def __init__(self, class_):
+        super().__init__(class_)
         self.stats['Cha'] += 1
         self.racial_features.add('Naturally Stealthy')
 
 class StoutHalfling(Halfling):
     race_name = 'Stout Halfling'
 
-    def __init__(self):
-        super().__init__()
+    def __init__(self, class_):
+        super().__init__(class_)
         self.stats['Con'] += 1
         self.racial_features.add('Stout Resillience')
 
@@ -145,8 +145,8 @@ class Human(Character):
     weight_range = range(120, 200)
     speed = 30
 
-    def __init__(self):
-        super().__init__()
+    def __init__(self, class_):
+        super().__init__(class_)
         for stat in ['Str', 'Dex', 'Con', 'Int', 'Wis', 'Cha']:
             self.stats[stat] += 1
         self.languages.add(random.choice(tables.languages))
@@ -158,8 +158,8 @@ class Dragonborn(Character):
     weight_range = range(200, 300)
     speed = 30
 
-    def __init__(self):
-        super().__init__()
+    def __init__(self, class_):
+        super().__init__(class_)
         self.languages.add('Draconic')
         self.stats['Str'] += 2
         self.stats['Cha'] += 1
@@ -175,8 +175,8 @@ class Gnome(Character):
     weight_range = range(20, 50)
     speed = 25
 
-    def __init__(self):
-        super().__init__()
+    def __init__(self, class_):
+        super().__init__(class_)
         self.languages.add('Gnomish')
         self.stats['Int'] += 2
         self.racial_features |= {'Darkvision', 'Gnome Cunning'}
@@ -184,16 +184,16 @@ class Gnome(Character):
 class ForestGnome(Gnome):
     race_name = 'Forest Gnome'
 
-    def __init__(self):
-        super().__init__()
+    def __init__(self, class_):
+        super().__init__(class_)
         self.stats['Dex'] += 1
         self.racial_features |= {'Natural Illusionist', 'Speak With Small Beasts'}
 
 class RockGnome(Gnome):
     race_name = 'Rock Gnome'
 
-    def __init__(self):
-        super().__init__()
+    def __init__(self, class_):
+        super().__init__(class_)
         self.stats['Con'] += 1
         self.racial_features |= {'Artificers Lore', 'Tinker'}
         self.tool_proficiencies.add('tinkers tools')
@@ -205,8 +205,8 @@ class HalfElf(Character):
     weight_range = range(115, 180)
     speed = 30
 
-    def __init__(self):
-        super().__init__()
+    def __init__(self, class_):
+        super().__init__(class_)
         self.languages.add('Elvish')
         self.stats['Cha'] += 2
         # Increase two random stats by 1
@@ -223,8 +223,8 @@ class HalfOrc(Character):
     weight_range = range(150, 300)
     speed = 30
 
-    def __init__(self):
-        super().__init__()
+    def __init__(self, class_):
+        super().__init__(class_)
         self.languages.add('Orc')
         self.stats['Str'] += 2
         self.stats['Con'] += 1
@@ -238,8 +238,8 @@ class Tiefling(Character):
     weight_range = range(120, 200)
     speed = 30
 
-    def __init__(self):
-        super().__init__()
+    def __init__(self, class_):
+        super().__init__(class_)
         self.languages.add('Infernal')
         self.stats['Cha'] += 2
         self.stats['Int'] += 1
