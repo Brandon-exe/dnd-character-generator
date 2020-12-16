@@ -2,7 +2,19 @@ import random
 import tables
 
 class Class:
-    pass
+    proficiency_bonus = 2
+    experience = 0
+
+    def __init__(self):
+        self.armor_proficiencies = set()
+        self.weapon_proficiencies = set()
+        self.skill_proficiencies = set()
+        self.tool_proficiencies = set()
+        self.save_throws = set()
+        self.class_features = set()
+        self.cantrips = set()
+        self.spells = set()
+        self.languages = set()
 
 class Barbarian(Class):
     class_name = 'Barbarian'
@@ -15,7 +27,6 @@ class Barbarian(Class):
         self.skill_proficiencies |= {'Animal Handling', 'Athletics', 'Intimidation', 'Nature', 'Perception', 'Survival'}
         self.save_throws |= {'Str', 'Con'}
         self.class_features |= {'Rage', 'Unarmored Defense'}
-        self.equipment |= {'explorers pack', 'x4 javelins'}
 
 class Bard(Class):
     class_name = 'Bard'
@@ -172,7 +183,7 @@ class Sorcerer(Class):
     def __init__(self):
         super().__init__()
         self.weapon_proficiencies |= {'daggers', 'darts', 'slings', 'quarterstaffs', 'light crossbow'}
-        self.skill_proficiencies |= set(random.sample(['Arcana', 'Deception', 'Insight', 'Intimidation', 'Persuasion', 'Religion']))
+        self.skill_proficiencies |= set(random.sample(['Arcana', 'Deception', 'Insight', 'Intimidation', 'Persuasion', 'Religion'], 2))
         self.cantrips |= set(random.sample(tables.sorcerer_cantrips, 4))
         self.spells |= set(random.sample(tables.sorcerer_lvl1_spells, 2))
         self.sorcerous_origin = random.choice(['Draconic Bloodline', 'Wild Magic'])
@@ -193,7 +204,7 @@ class Warlock(Class):
         self.skill_proficiencies |= set(random.sample(['Arcana', 'Deception', 'History', 'Intimidation', 'Investigation', 'Nature', 'Religion'], 2))
         self.save_throws |= {'Wis', 'Cha'}
         self.cantrips |= set(random.sample(tables.warlock_cantrips, 2))
-        self.skills |= set(random.sample(tables.warlock_lvl1_spells, 2))
+        self.spells |= set(random.sample(tables.warlock_lvl1_spells, 2))
         self.patron = random.choice(['The Archfey', 'The Fiend', 'The Great Old One'])
         if self.patron == 'The Archfey':
             self.class_features.add('Fey Presence')
@@ -211,7 +222,7 @@ class Wizard(Class):
         super().__init__()
         self.weapon_proficiencies |= {'daggers', 'darts', 'slings', 'quarterstaff', 'light crossbows'}
         self.skill_proficiencies |= set(random.sample(['Arcana', 'History', 'Insight', 'Investigation', 'Medicine', 'Religion'], 2))
-        self.save_throw |= {'Int', 'Wis'}
+        self.save_throws |= {'Int', 'Wis'}
         self.class_features.add('Arcane Recovery')
         self.arcane_tradition = random.choice(['School of Abjuration', 'School of Conjuration', 'School of Divination', 'School of Enchantment' 'School of Evocation', 'School of Illusion', 'School of Necromancy', 'School of Transmutation'])
 

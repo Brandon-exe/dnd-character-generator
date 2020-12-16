@@ -11,8 +11,8 @@ class_ = random.choice(classes.class_list)
 # Actually construct the character
 character = race(class_)
 character_class = class_()
-print('stats: ', end='')
 
+print('stats: ', end='')
 pprint.pprint(character.stats)
 
 print('race: ', end='')
