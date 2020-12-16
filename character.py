@@ -1,6 +1,7 @@
 import random
 import tables
 import classes
+import cgen
         
 # rolling the 4d6 for your stat
 def roll_stat():
@@ -18,21 +19,22 @@ def stats():
 
 class Character:
     def __init__(self, class_):
+        self.class_ = class_
         self.sex = random.choice(['Male', 'Female'])
         self.age = random.choice(self.age_range)
         self.height = random.choice(self.height_range)
         self.alignment = random.choice(tables.alignment)
         self.languages = {'Common'}
         self.racial_features = set()
-        self.class_features = set()
-        self.armor_proficiencies = set()
-        self.weapon_proficiencies = set()
-        self.tool_proficiencies = set()
-        self.skill_proficiencies = set()
-        self.save_throws = set()
-        self.cantrips = set()
-        self.spells = set()
-        self.equipment = set()
+        self.class_features = set(class_.class_features)
+        self.armor_proficiencies = set(class_.armor_proficiencies)
+        self.weapon_proficiencies = set(class_.weapon_proficiencies)
+        self.tool_proficiencies = set(class_.tool_proficiencies)
+        self.skill_proficiencies = set(class_.skill_proficiencies)
+        self.save_throws = set(class_.save_throws)
+        self.cantrips = set(class_.cantrips)
+        self.spells = set(class_.spells)
+        self.equipment = set(class_.equipment)
         self.stats = dict(zip(['Str', 'Con', 'Dex', 'Int', 'Wis', 'Cha'], stats()))
 
 class Dwarf(Character):
