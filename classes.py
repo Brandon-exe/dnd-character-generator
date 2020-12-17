@@ -4,6 +4,7 @@ import tables
 class Class:
     proficiency_bonus = 2
     experience = 0
+    spell_slots = 0
 
     def __init__(self):
         self.armor_proficiencies = set()
@@ -15,6 +16,7 @@ class Class:
         self.cantrips = set()
         self.spells = set()
         self.languages = set()
+        self.equipment = set()
 
 class Barbarian(Class):
     class_name = 'Barbarian'
