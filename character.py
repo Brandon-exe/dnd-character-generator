@@ -23,6 +23,7 @@ class Character:
         self.sex = random.choice(['Male', 'Female'])
         self.age = random.choice(self.age_range)
         self.height = random.choice(self.height_range)
+        self.weight = random.choice(self.weight_range)
         self.alignment = random.choice(tables.alignment)
         self.languages = {'Common'}
         self.racial_features = set()
