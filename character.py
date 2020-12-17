@@ -27,6 +27,8 @@ class Character:
         self.languages = {'Common'}
         self.racial_features = set()
         self.class_features = set(class_.class_features)
+        self.proficiency_bonus = (class_.proficiency_bonus)
+        self.experience = (class_.experience)
         self.armor_proficiencies = set(class_.armor_proficiencies)
         self.weapon_proficiencies = set(class_.weapon_proficiencies)
         self.tool_proficiencies = set(class_.tool_proficiencies)
