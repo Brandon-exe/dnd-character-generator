@@ -1,7 +1,6 @@
 import random
 import tables
 import classes
-import cgen
         
 # rolling the 4d6 for your stat
 def roll_stat():
@@ -36,6 +35,7 @@ class Character:
         self.tool_proficiencies = set(class_.tool_proficiencies)
         self.skill_proficiencies = set(class_.skill_proficiencies)
         self.save_throws = set(class_.save_throws)
+        self.spell_slots = set(class_.spell_slots)
         self.cantrips = set(class_.cantrips)
         self.spells = set(class_.spells)
         self.equipment = set(class_.equipment)
