@@ -20,6 +20,7 @@ def stats():
 class Character:
     def __init__(self, class_):
         self.class_ = class_
+        self.class_name = (class_.class_name)
         self.sex = random.choice(['Male', 'Female'])
         self.age = random.choice(self.age_range)
         self.height = random.choice(self.height_range)
@@ -27,6 +28,7 @@ class Character:
         self.languages = {'Common'}
         self.racial_features = set()
         self.class_features = set(class_.class_features)
+        self.hit_dice = (class_.hit_dice)
         self.proficiency_bonus = (class_.proficiency_bonus)
         self.experience = (class_.experience)
         self.armor_proficiencies = set(class_.armor_proficiencies)
