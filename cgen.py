@@ -9,8 +9,8 @@ race = random.choice(character.races)
 class_ = random.choice(classes.class_list)
 
 # Actually construct the character
-character = race(class_)
 character_class = class_()
+character = race(character_class)
 
 print('stats: ', end='')
 pprint.pprint(character.stats)
