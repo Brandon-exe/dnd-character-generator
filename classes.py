@@ -21,6 +21,7 @@ class Class:
 class Barbarian(Class):
     class_name = 'Barbarian'
     hit_dice = 12
+    stat_preference = ['Str', 'Con', 'Dex', 'Cha', 'Wis', 'Int']
 
     def __init__(self):
         super().__init__()
@@ -34,6 +35,7 @@ class Bard(Class):
     class_name = 'Bard'
     hit_dice = 8
     spell_slots = 2
+    stat_preference = ['Cha', 'Dex', 'Wis', 'Int', 'Con', 'Str']
 
     def __init__(self):
         super().__init__()
@@ -50,6 +52,7 @@ class Cleric(Class):
     class_name = 'Cleric'
     hit_dice = 8
     spell_slots = 2
+    stat_preference = ['Wis', 'Str', 'Con', 'Cha', 'Int', 'Dex']
 
     def __init__(self):
         super().__init__()
@@ -104,6 +107,7 @@ class Druid(Class):
     class_name = 'Druid'
     hit_dice = 8
     spell_slots = 2
+    stat_preference = ['Wis', 'Con', 'Dex', 'Int', 'Cha', 'Str']
 
     def __init__(self):
         super().__init__()
@@ -119,6 +123,7 @@ class Druid(Class):
 class Fighter(Class):
     class_name = 'Fighter'
     hit_dice = 10
+    stat_preference = ['Str', 'Dex', 'Con', 'Cha', 'Wis', 'Int']
 
     def __init__(self):
         super().__init__()
@@ -132,6 +137,7 @@ class Fighter(Class):
 class Monk(Class):
     class_name = 'Monk'
     hit_dice = 8
+    stat_preference = ['Dex', 'Wis', 'Str', 'Con', 'Cha', 'Int']
 
     def __init__(self):
         super().__init__()
@@ -142,6 +148,7 @@ class Monk(Class):
 class Paladin(Class):
     class_name = 'Paladin'
     hit_dice = 10
+    stat_preference = ['Str', 'Cha', 'Con', 'Dex', 'Wis', 'Int']
 
     def __init__(self):
         super().__init__()
@@ -156,6 +163,7 @@ class Ranger(Class):
     hit_dice = 10
     favored_enemy = random.choice(tables.ranger_favored_enemy)
     favored_terrain = random.choice(tables.ranger_favored_terrain)
+    stat_preference = ['Dex', 'Wis', 'Str', 'Con', 'Cha', 'Int']
 
     def __init__(self):
         super().__init__()
@@ -167,6 +175,7 @@ class Ranger(Class):
 class Rogue(Class):
     class_name = 'Rogue'
     hit_dice = 8
+    stat_preference = ['Dex', 'Cha', 'Int', 'Con', 'Str', 'Wis']
 
     def __init__(self):
         super().__init__()
@@ -181,6 +190,7 @@ class Sorcerer(Class):
     class_name = 'Sorcerer'
     hit_dice = 6
     spell_slots = 2
+    stat_preference = ['Cha', 'Con', 'Int', 'Wis', 'Dex', 'Str']
 
     def __init__(self):
         super().__init__()
@@ -198,6 +208,7 @@ class Warlock(Class):
     class_name = 'Warlock'
     hit_dice = 8
     spell_slots = 1
+    stat_preference = ['Cha', 'Con', 'Int', 'Wis', 'Dex', 'Str']
 
     def __init__(self):
         super().__init__()
@@ -219,6 +230,7 @@ class Wizard(Class):
     class_name = 'Wizard'
     hit_dice = 6
     spell_slots = 2
+    stat_preference = ['Int', 'Con', 'Dex', 'Cha', 'Wis', 'Str']
 
     def __init__(self):
         super().__init__()

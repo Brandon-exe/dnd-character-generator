@@ -14,6 +14,7 @@ def roll_stat():
 def stats():
     stat_ttl = 6
     all_stats = [roll_stat() for i in range(stat_ttl)]
+    all_stats = reversed(sorted(all_stats))
     return all_stats
 
 class Character:
@@ -40,7 +41,7 @@ class Character:
         self.cantrips = set(class_.cantrips)
         self.spells = set(class_.spells)
         self.equipment = set(class_.equipment)
-        self.stats = dict(zip(['Str', 'Con', 'Dex', 'Int', 'Wis', 'Cha'], stats()))
+        self.stats = dict(zip((class_.stat_preference), stats()))
 
 class Dwarf(Character):
     race_name = 'Dwarf'
