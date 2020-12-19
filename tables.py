@@ -37,18 +37,19 @@ armor = [
     },
 ]
 
-weapons = [
-    {
-        'simple weapons': {
-            'club', 'dagger', 'greatclub', 'handaxe', 'javelin', 'light hammer', 'mace', 
-            'quarterstaff', 'sickle', 'spear', 'light crossbow', 'dart', 'shortbow', 'sling',
-        },
-        'martial weapons': {
-            'battleaxe', 'flail', 'glaive', 'greataxe', 'greatsword', 'halberd', 'lance', 'longsword', 'maul', 'morningstar',
-            'pike', 'rapier', 'scimitar', 'shortsword', 'trident', 'war pick', 'warhammer', 'whip', 'blowgun', 'hand crossbow',
-            'heavy crossbow', 'longbow', 'net',
-        },
-    },
+simple_weapons = [
+    'club', 'dagger', 'greatclub', 'handaxe', 'javelin', 'light hammer', 'mace', 
+    'quarterstaff', 'sickle', 'spear', 'light crossbow', 'dart', 'shortbow', 'sling',
+]
+
+martial_weapons = [
+    'battleaxe', 'flail', 'glaive', 'greataxe', 'greatsword', 'halberd', 'lance', 'longsword', 'maul', 'morningstar',
+    'pike', 'rapier', 'scimitar', 'shortsword', 'trident', 'war pick', 'warhammer', 'whip', 'blowgun', 'hand crossbow',
+    'heavy crossbow', 'longbow', 'net',
+]
+
+instruments = [
+    'bagpipes', 'drum', 'dulcimer', 'flute', 'lute', 'lyre', 'horn', 'pan flute', 'shawm', 'viol',
 ]
 
 bard_cantrips = [

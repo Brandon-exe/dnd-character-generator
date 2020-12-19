@@ -2,6 +2,8 @@ import random
 import pprint
 import character
 import classes
+import races
+import backgrounds
 import tables
 
 # Choose a character race class
@@ -67,7 +69,7 @@ print('tool proficiencies: ', end='')
 pprint.pprint(character.tool_proficiencies)
 
 print('saving throws: ', end='')
-pprint.pprint(character.save_throws)
+pprint.pprint(character.saving_throws)
 
 print('spell slots: ', end='')
 pprint.pprint(character.spell_slots)

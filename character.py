@@ -1,7 +1,9 @@
 import random
 import tables
 import classes
-        
+import backgrounds
+import races
+
 # rolling the 4d6 for your stat
 def roll_stat():
     stat_rolls = 4
@@ -10,7 +12,7 @@ def roll_stat():
     del stat[0]
     return sum(stat)
 
-# loops the roll_stat function to roll 4d6, remove the lowest roll, and repeats 6 times
+# loops the roll_stat function to roll 4d6, remove the lowest roll, and repeats 6 times, stats are returned from highest to lowest
 def stats():
     stat_ttl = 6
     all_stats = [roll_stat() for i in range(stat_ttl)]
@@ -36,12 +38,12 @@ class Character:
         self.weapon_proficiencies = set(class_.weapon_proficiencies)
         self.tool_proficiencies = set(class_.tool_proficiencies)
         self.skill_proficiencies = set(class_.skill_proficiencies)
-        self.save_throws = set(class_.save_throws)
+        self.saving_throws = set(class_.save_throws)
         self.spell_slots = class_.spell_slots
         self.cantrips = set(class_.cantrips)
         self.spells = set(class_.spells)
-        self.equipment = set(class_.equipment)
-        self.stats = dict(zip((class_.stat_preference), stats()))
+        self.equipment = class_.starting_equipment()
+        self.stats = dict(zip(class_.stat_preference, stats()))
 
 class Dwarf(Character):
     race_name = 'Dwarf'
