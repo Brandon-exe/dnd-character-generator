@@ -2,12 +2,11 @@ import random
 import pprint
 import character
 import classes
-import races
 import backgrounds
 import tables
 
 # Choose a character race class
-race = random.choice(races.races)
+race = random.choice(character.races)
 class_ = random.choice(classes.class_list)
 
 # Actually construct the character

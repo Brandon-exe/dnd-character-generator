@@ -16,6 +16,9 @@ class Class:
         self.cantrips = set()
         self.spells = set()
         self.languages = set()
+    
+    def __str__(self):
+        return f'Class {self.class_name}, hit die 1d{self.hit_dice}'
 
 class Barbarian(Class):
     class_name = 'Barbarian'
@@ -92,12 +95,12 @@ class Cleric(Class):
         elif self.domain == 'Light Cleric':
             self.class_features.add('Warding Flare')
             self.spells |= {'Burning Hands', 'Faerie Fire'}
-            self.cantrips |= set(random.choice(tables.cleric_cantrips))
+            self.cantrips.add(random.choice(tables.cleric_cantrips))
 
         elif self.domain == 'Nature Cleric':
             self.armor_proficiencies.add('heavy armor')
             self.skill_proficiencies |= set(random.choice(['Animal Handling', 'Nature', 'Survival']))
-            self.cantrips |= set(random.choice(tables.druid_cantrips))
+            self.cantrips.add(random.choice(tables.druid_cantrips))
             self.spells |= {'Animal Friendship', 'Speak with Animals'}
 
         elif self.domain == 'Tempest Cleric':
@@ -116,7 +119,23 @@ class Cleric(Class):
             self.weapon_proficiencies.add('martial weapons')
             self.spells |= {'Divine Favor', 'Shield of Faith'}
     
-    # need starting_equipment function here
+    def starting_equipment(self):
+        all_equipment = {'shield', 'holy symbol'}
+        all_equipment |= random.choice([{'light crossbow', 'x20 bolts'}, {random.choice(tables.simple_weapons)}])
+        all_equipment.add(random.choice(['priests pack', 'explorers pack']))
+
+        if 'warhammer' in self.weapon_proficiencies:
+            all_equipment.add(random.choice(['mace', 'warhammer']))
+
+        elif 'chain mail' in self.armor_proficiencies:
+            all_equipment.add(random.choice(['scale mail', 'leather armor', 'chain mail']))
+            
+        else:
+            all_equipment.add('mace')
+            all_equipment.add(random.choice(['scale mail', 'leather armor']))
+        
+    def __str__(self):
+        return super().__str__() + f', domain: {self.domain}'
 
 class Druid(Class):
     class_name = 'Druid'
@@ -225,10 +244,13 @@ class Ranger(Class):
     def starting_equipment(self):
         all_equipment = {'longbow', 'x20 arrows', 'quiver'}
         simple_melee_weapon = random.choice(['club', 'dagger', 'greatclub', 'handaxe', 'light hammer', 'mace', 'quarterstaff', 'sickle'])
-        all_equipment |= random.choice([{'x2 shortsword'}, simple_melee_weapon])
+        all_equipment.add(random.choice(['x2 shortsword', simple_melee_weapon]))
         all_equipment.add(random.choice(['scale mail', 'leather armor']))
         all_equipment.add(random.choice(['dungeoneers pack', 'explorers pack']))
         return all_equipment
+    
+    def __str__(self):
+        return super().__str__() + f', favored terrain: {self.favored_terrain}, favored enemy: {self.favored_enemy}'
 
 class Rogue(Class):
     class_name = 'Rogue'
@@ -275,8 +297,11 @@ class Sorcerer(Class):
         all_equipment = {'x2 daggers'}
         all_equipment.add(random.choice(['component pouch', 'arcane focus']))
         all_equipment.add(random.choice(['dungeoneers pack', 'explorers pack']))
-        all_equipment |= random.choice([{'light crossbow', 'x20 bolts', random.choice(tables.simple_weapons)}])
+        all_equipment |= random.choice([{'light crossbow', 'x20 bolts'}, {random.choice(tables.simple_weapons)}])
         return all_equipment
+    
+    def __str__(self):
+        return super().__str__() + f', sorcerous origin: {self.sorcerous_origin}'
 
 class Warlock(Class):
     class_name = 'Warlock'
@@ -308,6 +333,9 @@ class Warlock(Class):
         all_equipment.add(random.choice(['scholars pack', 'dungeoneers pack']))
         return all_equipment
 
+    def __str__(self):
+        return super().__str__() + f', patron: {self.patron}'
+
 class Wizard(Class):
     class_name = 'Wizard'
     hit_dice = 6
@@ -331,6 +359,9 @@ class Wizard(Class):
         all_equipment.add(random.choice(['component pouch', 'arcane focus']))
         all_equipment.add(random.choice(['scholars pack', 'explorers pack']))
         return all_equipment
+
+    def __str__(self):
+        return super().__str__() + f', arcane tradition: {self.arcane_tradition}'
 
 class_list = [
     Barbarian,

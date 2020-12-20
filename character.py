@@ -2,7 +2,6 @@ import random
 import tables
 import classes
 import backgrounds
-import races
 
 # rolling the 4d6 for your stat
 def roll_stat():
