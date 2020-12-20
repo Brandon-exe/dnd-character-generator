@@ -11,12 +11,37 @@ def roll_stat():
     del stat[0]
     return sum(stat)
 
-# loops the roll_stat function to roll 4d6, remove the lowest roll, and repeats 6 times, stats are returned from highest to lowest
-def stats():
+class Ability:
+    '''A randomly rolled ability score.  Contstructing this rolls it as an ability.'''
+
+    def __init__(self, score):
+        stat_rolls = 4
+        stat = [random.randint(1, 6) for i in range(stat_rolls)]
+        stat.sort()
+        del stat[0]
+        self.score = sum(stat)
+
+    @property
+    def modifier(self):
+        return (self.score - 10) // 2
+
+    # Need to implement lt (less-than) so that this is sortable
+    def __lt__(self, other):
+        return self.score < other.score
+
+    def __eq__(self, other):
+        return self.score == other.score
+
+    def __str__(self):
+        '''Converts to a string just as an integer'''
+        return str(self.score)
+
+
+def roll_abilities():
     stat_ttl = 6
-    all_stats = [roll_stat() for i in range(stat_ttl)]
-    all_stats = reversed(sorted(all_stats))
-    return all_stats
+    all_abilities = [Ability() for i in range(stat_ttl)]
+    all_abilities = reversed(sorted(all_abilities))
+    return all_abilities
 
 class Character:
     def __init__(self, class_):
@@ -42,7 +67,7 @@ class Character:
         self.cantrips = set(class_.cantrips)
         self.spells = set(class_.spells)
         self.equipment = class_.starting_equipment()
-        self.stats = dict(zip(class_.stat_preference, stats()))
+        self.stats = dict(zip(class_.stat_preference, roll_abilities()))
 
 class Dwarf(Character):
     race_name = 'Dwarf'

@@ -1,5 +1,6 @@
 import random
 import tables
+import character
 
 class Class:
     proficiency_bonus = 2
@@ -19,6 +20,9 @@ class Class:
     
     def __str__(self):
         return f'Class {self.class_name}, hit die 1d{self.hit_dice}'
+    
+    def spell_save_dc(self, character):
+        return None
 
 class Barbarian(Class):
     class_name = 'Barbarian'
@@ -63,6 +67,9 @@ class Bard(Class):
         all_equipment.add(random.choice(['diplomats pack', 'entertainers pack',]))
         all_equipment.add(random.choice(['lute', random.choice(tables.instruments)]))
         return all_equipment
+
+    def spell_save_dc(self, character):
+        return 8 + self.proficiency_bonus + character.stats['Cha'].modifier
 
 class Cleric(Class):
     class_name = 'Cleric'
@@ -126,13 +133,16 @@ class Cleric(Class):
 
         if 'warhammer' in self.weapon_proficiencies:
             all_equipment.add(random.choice(['mace', 'warhammer']))
-
-        elif 'chain mail' in self.armor_proficiencies:
-            all_equipment.add(random.choice(['scale mail', 'leather armor', 'chain mail']))
-            
         else:
             all_equipment.add('mace')
+        if 'chain mail' in self.armor_proficiencies:
+            all_equipment.add(random.choice(['scale mail', 'leather armor', 'chain mail']))
+        else:
             all_equipment.add(random.choice(['scale mail', 'leather armor']))
+        return all_equipment
+
+    def spell_save_dc(self, character):
+        return 8 + self.proficiency_bonus + character.stats['Wis'].modifier
         
     def __str__(self):
         return super().__str__() + f', domain: {self.domain}'
@@ -160,6 +170,9 @@ class Druid(Class):
         all_equipment.add(random.choice(['wooden shield', random.choice(tables.simple_weapons)]))
         all_equipment.add(random.choice(['scimitar', simple_melee_weapon]))
         return all_equipment
+
+    def spell_save_dc(self, character):
+        return 8 + self.proficiency_bonus + character.stats['Wis'].modifier
 
 class Fighter(Class):
     class_name = 'Fighter'
@@ -302,6 +315,9 @@ class Sorcerer(Class):
     
     def __str__(self):
         return super().__str__() + f', sorcerous origin: {self.sorcerous_origin}'
+    
+    def spell_save_dc(self, character):
+        return 8 + self.proficiency_bonus + character.stats['Cha'].modifier
 
 class Warlock(Class):
     class_name = 'Warlock'
@@ -318,6 +334,7 @@ class Warlock(Class):
         self.cantrips |= set(random.sample(tables.warlock_cantrips, 2))
         self.spells |= set(random.sample(tables.warlock_lvl1_spells, 2))
         self.patron = random.choice(['The Archfey', 'The Fiend', 'The Great Old One'])
+
         if self.patron == 'The Archfey':
             self.class_features.add('Fey Presence')
         elif self.patron == 'The Fiend':
@@ -335,6 +352,9 @@ class Warlock(Class):
 
     def __str__(self):
         return super().__str__() + f', patron: {self.patron}'
+
+    def spell_save_dc(self, character):
+        return 8 + self.proficiency_bonus + character.stats['Cha'].modifier
 
 class Wizard(Class):
     class_name = 'Wizard'
@@ -364,6 +384,9 @@ class Wizard(Class):
 
     def __str__(self):
         return super().__str__() + f', arcane tradition: {self.arcane_tradition}'
+    
+    def spell_save_dc(self, character):
+        return 8 + self.proficiency_bonus + character.stats['Int'].modifier
 
 class_list = [
     Barbarian,
