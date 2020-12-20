@@ -24,6 +24,9 @@ class Class:
     def spell_save_dc(self, character):
         return None
 
+    def spell_attack_modifier(self, character):
+        return None
+
 class Barbarian(Class):
     class_name = 'Barbarian'
     hit_dice = 12
@@ -70,6 +73,9 @@ class Bard(Class):
 
     def spell_save_dc(self, character):
         return 8 + self.proficiency_bonus + character.stats['Cha'].modifier
+    
+    def spell_attack_modifier(self, character):
+        return self.proficiency_bonus + character.stats['Cha'].modifier
 
 class Cleric(Class):
     class_name = 'Cleric'
@@ -143,6 +149,9 @@ class Cleric(Class):
 
     def spell_save_dc(self, character):
         return 8 + self.proficiency_bonus + character.stats['Wis'].modifier
+
+    def spell_attack_modifier(self, character):
+        return self.proficiency_bonus + character.stats['Wis'].modifier
         
     def __str__(self):
         return super().__str__() + f', domain: {self.domain}'
@@ -173,6 +182,9 @@ class Druid(Class):
 
     def spell_save_dc(self, character):
         return 8 + self.proficiency_bonus + character.stats['Wis'].modifier
+
+    def spell_attack_modifier(self, character):
+        return self.proficiency_bonus + character.stats['Wis'].modifier
 
 class Fighter(Class):
     class_name = 'Fighter'
@@ -319,6 +331,9 @@ class Sorcerer(Class):
     def spell_save_dc(self, character):
         return 8 + self.proficiency_bonus + character.stats['Cha'].modifier
 
+    def spell_attack_modifier(self, character):
+        return self.proficiency_bonus + character.stats['Cha'].modifier
+
 class Warlock(Class):
     class_name = 'Warlock'
     hit_dice = 8
@@ -356,6 +371,9 @@ class Warlock(Class):
     def spell_save_dc(self, character):
         return 8 + self.proficiency_bonus + character.stats['Cha'].modifier
 
+    def spell_attack_modifier(self, character):
+        return self.proficiency_bonus + character.stats['Cha'].modifier
+
 class Wizard(Class):
     class_name = 'Wizard'
     hit_dice = 6
@@ -387,6 +405,9 @@ class Wizard(Class):
     
     def spell_save_dc(self, character):
         return 8 + self.proficiency_bonus + character.stats['Int'].modifier
+    
+    def spell_attack_modifier(self, character):
+        return self.proficiency_bonus + character.stats['Int'].modifier
 
 class_list = [
     Barbarian,
