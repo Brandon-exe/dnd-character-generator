@@ -35,7 +35,7 @@ class Barbarian(Class):
         all_equipment.add(random.choice(['battleaxe', random.choice(tables.martial_weapons)]))
         all_equipment.add(random.choice(['two handaxes', random.choice(tables.simple_weapons)]))
         return all_equipment
-        
+
 
 class Bard(Class):
     class_name = 'Bard'

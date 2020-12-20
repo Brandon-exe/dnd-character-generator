@@ -7,7 +7,7 @@ import backgrounds
 import tables
 
 # Choose a character race class
-race = random.choice(character.races)
+race = random.choice(races.races)
 class_ = random.choice(classes.class_list)
 
 # Actually construct the character
