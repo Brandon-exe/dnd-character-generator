@@ -38,7 +38,7 @@ class Character:
         self.weapon_proficiencies = set(class_.weapon_proficiencies)
         self.tool_proficiencies = set(class_.tool_proficiencies)
         self.skill_proficiencies = set(class_.skill_proficiencies)
-        self.saving_throws = set(class_.save_throws)
+        self.saving_throws = set(class_.saving_throws)
         self.spell_slots = class_.spell_slots
         self.cantrips = set(class_.cantrips)
         self.spells = set(class_.spells)

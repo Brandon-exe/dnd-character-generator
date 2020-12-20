@@ -16,7 +16,6 @@ class Class:
         self.cantrips = set()
         self.spells = set()
         self.languages = set()
-        self.equipment = set()
 
 class Barbarian(Class):
     class_name = 'Barbarian'
@@ -116,6 +115,8 @@ class Cleric(Class):
             self.armor_proficiencies.add('heavy armor')
             self.weapon_proficiencies.add('martial weapons')
             self.spells |= {'Divine Favor', 'Shield of Faith'}
+    
+    # need starting_equipment function here
 
 class Druid(Class):
     class_name = 'Druid'
@@ -134,6 +135,13 @@ class Druid(Class):
         self.spells |= set(random.sample(tables.druid_lvl1_spells, 2))
         self.languages.add('Druidic')
 
+    def starting_equipment(self):
+        all_equipment = {'leather armor', 'explorers pack', 'druidic focus'}
+        simple_melee_weapon = random.choice([{'club', 'dagger', 'greatclub', 'handaxe', 'light hammer', 'mace', 'quarterstaff', 'sickle'}])
+        all_equipment.add(random.choice([{'wooden shield'}, set(random.choice(tables.simple_weapons))]))
+        all_equipment.add(random.choice([{'scimitar'}, simple_melee_weapon]))
+        return all_equipment
+
 class Fighter(Class):
     class_name = 'Fighter'
     hit_dice = 10
@@ -147,6 +155,16 @@ class Fighter(Class):
         self.saving_throws |= {'Str', 'Con'}
         self.class_features.add('Second Wind')
         self.fighting_style = random.choice(tables.fighter_styles)
+    
+    def starting_equipment(self):
+        all_equipment = set()
+        shield_and_martial_weapon = {'shield', random.choice(tables.martial_weapons)}
+        two_martial_weapons = set(random.sample(tables.martial_weapons, 2))
+        all_equipment |= random.choice([shield_and_martial_weapon, two_martial_weapons])
+        all_equipment |= random.choice([{'chain mail'}, {'longbow', 'leather armor', 'x20 arrows'}])
+        all_equipment |= random.choice([{'light crossbow', 'x20 bolts'}, {'x2 hand axe'}])
+        all_equipment.add(random.choice(['dungeoneers pack', 'explorers pack']))
+        return all_equipment
 
 class Monk(Class):
     class_name = 'Monk'
@@ -160,6 +178,12 @@ class Monk(Class):
         self.saving_throws |= {'Str', 'Dex'}
         self.class_features |= {'Unarmored Defense', 'Martial Arts'}
 
+    def starting_equipment(self):
+        all_equipment = {'10 darts'}
+        all_equipment.add(random.choice([{'shortsword'}, set(random.choice(tables.simple_weapons))]))
+        all_equipment.add(random.choice([{'dungeoneers pack'}, {'explorers pack'}]))
+        return all_equipment
+
 class Paladin(Class):
     class_name = 'Paladin'
     hit_dice = 10
@@ -172,6 +196,16 @@ class Paladin(Class):
         self.skill_proficiencies |= set(random.sample(['Athletics', 'Insight', 'Intimidation', 'Medicine', 'Persuasion', 'Religion'], 2))
         self.saving_throws |= {'Wis', 'Cha'}
         self.class_features |= {'Divine Sense', 'Lay on Hands'}
+    
+    def starting_equipment(self):
+        all_equipment = {'chain mail', 'holy symbol'}
+        shield_and_martial_weapon = {'shield', random.choice(tables.martial_weapons)}
+        two_martial_weapons = set(random.sample(tables.martial_weapons, 2))
+        simple_melee_weapon = set(random.choice(['club', 'dagger', 'greatclub', 'handaxe', 'light hammer', 'mace', 'quarterstaff', 'sickle']))
+        all_equipment |= random.choice({'x5 javelins', simple_melee_weapon})
+        all_equipment |= random.choice([shield_and_martial_weapon, two_martial_weapons])
+        all_equipment.add(random.choice({'priests pack', 'explorers pack'}))
+        return all_equipment
 
 class Ranger(Class):
     class_name = 'Ranger'
@@ -187,6 +221,14 @@ class Ranger(Class):
         self.skill_proficiencies |= set(random.sample(['Animal Handling', 'Athletics', 'Insight', 'Investigation', 'Nature', 'Perception', 'Stealth', 'Survival'], 3))
         self.saving_throws |= {'Str', 'Dex'}
         self.class_features |= {'Favored Enemy', 'Natural Explorer'}
+    
+    def starting_equipment(self):
+        all_equipment = {'longbow', 'x20 arrows', 'quiver'}
+        simple_melee_weapon = set(random.choice(['club', 'dagger', 'greatclub', 'handaxe', 'light hammer', 'mace', 'quarterstaff', 'sickle']))
+        all_equipment.add(random.choice({'x2 shortsword'}, simple_melee_weapon))
+        all_equipment.add(random.choice({'scale mail', 'leather armor'}))
+        all_equipment.add(random.choice({'dungeoneers pack', 'explorers pack'}))
+        return all_equipment
 
 class Rogue(Class):
     class_name = 'Rogue'
@@ -196,12 +238,19 @@ class Rogue(Class):
     def __init__(self):
         super().__init__()
         self.armor_proficiencies.add('light armor')
-        self.weapon_proficiencies |= {'simple weapons', 'hand crossbows', 'lonswords', 'rapiers', 'shortswords'}
+        self.weapon_proficiencies |= {'simple weapons', 'hand crossbows', 'longswords', 'rapiers', 'shortswords'}
         self.tool_proficiencies.add('thieves tools')
         self.skill_proficiencies |= set(random.sample(['Acrobatics', 'Athletics', 'Deception', 'Insight', 'Intimidation', 'Investigation', 'Perception', 
         'Performance', 'Persuasion', 'Slight of Hand', 'Stealth'], 4))
         self.saving_throws |= {'Dex', 'Int'}
         self.class_features |= {'Expertise', 'Sneak Attack', 'Thieves Cant'}
+
+    def starting_equipment(self):
+        all_equipment = {'leather amror', 'two daggers', 'thieves tools'}
+        all_equipment.add(random.choice([{'shortbow', 'x20 arrows', 'quiver'}, {'shortsword'}]))
+        all_equipment.add(random.choice({'rapier', 'shortsword'}))
+        all_equipment.add(random.choice({'burglars pack', 'dungeoneers pack', 'explorers pack'}))
+        return all_equipment
 
 class Sorcerer(Class):
     class_name = 'Sorcerer'
@@ -221,6 +270,12 @@ class Sorcerer(Class):
             self.class_features |= {'Draconic Ancestor', 'Draconic Resillience'}
         elif self. sorcerous_origin == 'Wild Magic':
             self.class_features |= {'Wild Magic Surge', 'Tides of Chaos'}
+    
+    def starting_equipment(self):
+        all_equipment = {'x2 daggers'}
+        all_equipment.add(random.choice({'component pouch', 'arcane focus'}))
+        all_equipment.add(random.choice({'dungeoneers pack', 'explorers pack'}))
+        all_equipment.add(random.choice([{'light crossbow', 'x20 bolts'}, set(random.choice(tables.simple_weapons))]))
 
 class Warlock(Class):
     class_name = 'Warlock'
@@ -243,6 +298,14 @@ class Warlock(Class):
             self.class_features.add('Dark ones Blessing')
         elif self.patron == 'The Great Old One':
             self.class_features.add('Awakened Mind')
+    
+    def starting_equipment(self):
+        all_equipment = {'leather armor', 'x2 dagger'}
+        all_equipment |= set((random.choice(tables.simple_weapons)))
+        all_equipment.add(random.choice([{'light crossbow', 'x20 bolts'}, {'arcane focus'}]))
+        all_equipment.add(random.choice({'component pouch', 'arcane focus'}))
+        all_equipment.add(random.choice({'scholars pack', 'dungeoneers pack'}))
+        return all_equipment
 
 class Wizard(Class):
     class_name = 'Wizard'
@@ -260,6 +323,13 @@ class Wizard(Class):
 
         school = self.arcane_tradition.split()[-1]
         self.class_features.add(f'{school} Savant')
+    
+    def starting_equipment(self):
+        all_equipment = {'spellbook'}
+        all_equipment.add(random.choice({'quarterstaff', 'dagger'}))
+        all_equipment.add(random.choice({'component pouch', 'arcane focus'}))
+        all_equipment.add(random.choice({'scholars pack', 'explorers pack'}))
+        return all_equipment
 
 class_list = [
     Barbarian,
