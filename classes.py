@@ -348,6 +348,8 @@ class Wizard(Class):
         self.skill_proficiencies |= set(random.sample(['Arcana', 'History', 'Insight', 'Investigation', 'Medicine', 'Religion'], 2))
         self.saving_throws |= {'Int', 'Wis'}
         self.class_features.add('Arcane Recovery')
+        self.cantrips |= set(random.sample(tables.wizard_cantrips, 3))
+        self.spells |= set(random.sample(tables.wizard_lvl1_spells, 6))
         self.arcane_tradition = random.choice(['School of Abjuration', 'School of Conjuration', 'School of Divination', 'School of Enchantment' 'School of Evocation', 'School of Illusion', 'School of Necromancy', 'School of Transmutation'])
 
         school = self.arcane_tradition.split()[-1]
