@@ -138,8 +138,8 @@ class Druid(Class):
     def starting_equipment(self):
         all_equipment = {'leather armor', 'explorers pack', 'druidic focus'}
         simple_melee_weapon = random.choice([{'club', 'dagger', 'greatclub', 'handaxe', 'light hammer', 'mace', 'quarterstaff', 'sickle'}])
-        all_equipment.add(random.choice([{'wooden shield'}, set(random.choice(tables.simple_weapons))]))
-        all_equipment.add(random.choice([{'scimitar'}, simple_melee_weapon]))
+        all_equipment |= random.choice([{'wooden shield'}, set(random.choice(tables.simple_weapons))])
+        all_equipment |= random.choice([{'scimitar'}, simple_melee_weapon])
         return all_equipment
 
 class Fighter(Class):
@@ -180,8 +180,8 @@ class Monk(Class):
 
     def starting_equipment(self):
         all_equipment = {'10 darts'}
-        all_equipment.add(random.choice([{'shortsword'}, set(random.choice(tables.simple_weapons))]))
-        all_equipment.add(random.choice([{'dungeoneers pack'}, {'explorers pack'}]))
+        all_equipment |= random.choice([{'shortsword'}, set(random.choice(tables.simple_weapons))])
+        all_equipment.add(random.choice([{'dungeoneers pack', 'explorers pack'}]))
         return all_equipment
 
 class Paladin(Class):
@@ -225,7 +225,7 @@ class Ranger(Class):
     def starting_equipment(self):
         all_equipment = {'longbow', 'x20 arrows', 'quiver'}
         simple_melee_weapon = set(random.choice(['club', 'dagger', 'greatclub', 'handaxe', 'light hammer', 'mace', 'quarterstaff', 'sickle']))
-        all_equipment.add(random.choice({'x2 shortsword'}, simple_melee_weapon))
+        all_equipment |= random.choice({'x2 shortsword'}, simple_melee_weapon)
         all_equipment.add(random.choice({'scale mail', 'leather armor'}))
         all_equipment.add(random.choice({'dungeoneers pack', 'explorers pack'}))
         return all_equipment
@@ -247,9 +247,9 @@ class Rogue(Class):
 
     def starting_equipment(self):
         all_equipment = {'leather amror', 'two daggers', 'thieves tools'}
-        all_equipment.add(random.choice([{'shortbow', 'x20 arrows', 'quiver'}, {'shortsword'}]))
-        all_equipment.add(random.choice({'rapier', 'shortsword'}))
-        all_equipment.add(random.choice({'burglars pack', 'dungeoneers pack', 'explorers pack'}))
+        all_equipment |= random.choice([{'shortbow', 'x20 arrows', 'quiver'}, {'shortsword'}])
+        all_equipment |= random.choice({'rapier', 'shortsword'})
+        all_equipment |= (random.choice({'burglars pack', 'dungeoneers pack', 'explorers pack'}))
         return all_equipment
 
 class Sorcerer(Class):
@@ -273,9 +273,10 @@ class Sorcerer(Class):
     
     def starting_equipment(self):
         all_equipment = {'x2 daggers'}
-        all_equipment.add(random.choice({'component pouch', 'arcane focus'}))
+        all_equipment |= (random.choice({'component pouch', 'arcane focus'}))
         all_equipment.add(random.choice({'dungeoneers pack', 'explorers pack'}))
         all_equipment.add(random.choice([{'light crossbow', 'x20 bolts'}, set(random.choice(tables.simple_weapons))]))
+        return all_equipment
 
 class Warlock(Class):
     class_name = 'Warlock'
@@ -302,9 +303,9 @@ class Warlock(Class):
     def starting_equipment(self):
         all_equipment = {'leather armor', 'x2 dagger'}
         all_equipment |= set((random.choice(tables.simple_weapons)))
-        all_equipment.add(random.choice([{'light crossbow', 'x20 bolts'}, {'arcane focus'}]))
-        all_equipment.add(random.choice({'component pouch', 'arcane focus'}))
-        all_equipment.add(random.choice({'scholars pack', 'dungeoneers pack'}))
+        all_equipment |= (random.choice([{'light crossbow', 'x20 bolts'}, {'arcane focus'}]))
+        all_equipment |= (random.choice({'component pouch', 'arcane focus'}))
+        all_equipment |= (random.choice({'scholars pack', 'dungeoneers pack'}))
         return all_equipment
 
 class Wizard(Class):
