@@ -46,7 +46,6 @@ class Barbarian(Class):
         all_equipment.add(random.choice(['two handaxes', random.choice(tables.simple_weapons)]))
         return all_equipment
 
-
 class Bard(Class):
     class_name = 'Bard'
     hit_dice = 8

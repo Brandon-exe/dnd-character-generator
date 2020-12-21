@@ -4,8 +4,14 @@ import character
 import classes
 
 class Race:
-    def __init__(self):
-        pass
+    def __init__(self, class_):
+        self.class_ = class_
+        self.languages = set()
+        self.skill_proficiencies = set()
+        self.weapon_proficiencies = set()
+        self.armor_proficiencies = set()
+        self.tool_proficiencies = set()
+        self.features = set()
 
 class Dwarf(Race):
     race_name = 'Dwarf'
@@ -139,6 +145,9 @@ class Dragonborn(Race):
         self.ancestry = random.choice([
             'Black', 'Blue', 'Brass', 'Bronze', 'Copper', 'Gold', 'Green', 'Red', 'Silver', 'White'
         ])
+
+    def __str__(self):
+        return super().__str__() + f', ancestry: {self.ancestry}'
 
 class Gnome(Race):
     race_name = 'Gnome'

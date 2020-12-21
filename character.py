@@ -51,11 +51,11 @@ class Character:
     def __init__(self, race):
         self.race = race
         self.sex = random.choice(['Male', 'Female'])
-        self.age = random.choice(self.age_range)
-        self.height = random.choice(self.height_range)
-        self.weight = random.choice(self.weight_range)
+        self.age = random.choice(race.age_range)
+        self.height = random.choice(race.height_range)
+        self.weight = random.choice(race.weight_range)
         self.alignment = random.choice(tables.alignment)
-        self.languages = {'Common'}
+        self.languages = {'Common'} | race.languages
         self.racial_features = set(race.features)
         self.armor_proficiencies = set(race.armor_proficiencies())
 
