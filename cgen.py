@@ -1,17 +1,20 @@
 import random
 import pprint
-import character
+from character import Character
 import classes
+import races
 import backgrounds
 import tables
 
-# Choose a character race class
-race = random.choice(character.races)
-class_ = random.choice(classes.class_list)
+race = random.choice(random.choice(races.all))
+character_race = race()
 
-# Actually construct the character
-character_class = class_()
-character = race(character_class)
+character = Character(character_race)
+
+class_ = random.choice(random.choice(classes.all))
+character_class = class_(character)
+
+character.set_class(character_class)
 
 print('stats: ', end='')
 pprint.pprint(character.stats)

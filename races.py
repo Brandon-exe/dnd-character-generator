@@ -1,8 +1,11 @@
 import random
 import tables
+import character
+import classes
 
 class Race:
-    pass
+    def __init__(self):
+        pass
 
 class Dwarf(Race):
     race_name = 'Dwarf'
@@ -16,16 +19,16 @@ class Dwarf(Race):
         self.languages.add('Dwarvish')
         self.weapon_proficiencies |= {'battleaxes', 'handaxes', 'light hammers', 'warhammers'}
         self.tool_proficiencies.add(random.choice(['smith tools', 'brewer supplies', 'mason tools']))
-        self.racial_features |= {'Darkvision', 'Dwarven Resillience', 'Stonecunning'}
-        self.stats['Con'] += 2
+        self.features |= {'Darkvision', 'Dwarven Resillience', 'Stonecunning'}
+        self.stats['Con'].score += 2
 
 class HillDwarf(Dwarf):
     race_name = 'Hill Dwarf'
 
     def __init__(self, class_):
         super().__init__(class_)
-        self.racial_features.add('Dwarven Toughness')
-        self.stats['Wis'] += 1
+        self.features.add('Dwarven Toughness')
+        self.stats['Wis'].score += 1
 
 class MountainDwarf(Dwarf):
     race_name = 'Mountain Dwarf'
@@ -33,7 +36,7 @@ class MountainDwarf(Dwarf):
     def __init__(self, class_):
         super().__init__(class_)
         self.armor_proficiencies |= {'light armor', 'medium armor'}
-        self.stats['Str'] += 2
+        self.stats['Str'].score += 2
 
 class Elf(Race):
     race_name = 'Elf'
@@ -44,19 +47,19 @@ class Elf(Race):
 
     def __init__(self, class_):
         super().__init__(class_)
-        self.racial_features |= {'Darkvision', 'Fey Ancestry', 'Trance'}
+        self.features |= {'Darkvision', 'Fey Ancestry', 'Trance'}
         self.languages.add('Elvish')
         self.skill_proficiencies.add('Perception')
-        self.stats['Dex'] += 2
+        self.stats['Dex'].score += 2
 
 class HighElf(Elf):
     race_name = 'High Elf'
 
     def __init__(self, class_):
         super().__init__(class_)
-        self.stats['Int'] += 1
+        self.stats['Int'].score += 1
         self.weapon_proficiencies |= {'longswords', 'shortswords', 'shortbows', 'longbows'}
-        self.racial_features.add('Cantrip')
+        self.features.add('Cantrip')
         self.languages.add(random.choice(tables.languages))
 
 class WoodElf(Elf):
@@ -65,17 +68,17 @@ class WoodElf(Elf):
 
     def __init__(self, class_):
         super().__init__(class_)
-        self.stats['Wis'] += 1
+        self.stats['Wis'].score += 1
         self.weapon_proficiencies |= {'longswords', 'shortswords', 'shortbows', 'longbows'}
-        self.racial_features.add('Mask of the Wild')
+        self.features.add('Mask of the Wild')
 
 class Drow(Elf):
     race_name = 'Drow'
 
     def __init__(self, class_):
         super().__init__(class_)
-        self.stats['Cha'] += 1
-        self.racial_features |= {'Superior Darkvisiclass_on', 'Sunlight Sensitivity', 'Drow Magic'}
+        self.stats['Cha'].score += 1
+        self.features |= {'Superior Darkvisiclass_on', 'Sunlight Sensitivity', 'Drow Magic'}
         self.weapon_proficiencies |= {'rapiers', 'shortswords', 'hand crossbows'}
 
 class Halfling(Race):
@@ -87,25 +90,25 @@ class Halfling(Race):
 
     def __init__(self, class_):
         super().__init__(class_)
-        self.racial_features |= {'Lucky', 'Brave', 'Halfling Nimbleness'}
+        self.features |= {'Lucky', 'Brave', 'Halfling Nimbleness'}
         self.languages.add('Halfling')
-        self.stats['Dex'] += 2
+        self.stats['Dex'].score += 2
 
 class LightfootHalfling(Halfling):
     race_name = 'Lightfoot Halfling'
 
     def __init__(self, class_):
         super().__init__(class_)
-        self.stats['Cha'] += 1
-        self.racial_features.add('Naturally Stealthy')
+        self.stats['Cha'].score += 1
+        self.features.add('Naturally Stealthy')
 
 class StoutHalfling(Halfling):
     race_name = 'Stout Halfling'
 
     def __init__(self, class_):
         super().__init__(class_)
-        self.stats['Con'] += 1
-        self.racial_features.add('Stout Resillience')
+        self.stats['Con'].score += 1
+        self.features.add('Stout Resillience')
 
 class Human(Race):
     race_name = 'Human'
@@ -117,7 +120,7 @@ class Human(Race):
     def __init__(self, class_):
         super().__init__(class_)
         for stat in ['Str', 'Dex', 'Con', 'Int', 'Wis', 'Cha']:
-            self.stats[stat] += 1
+            self.stats[stat].score += 1
         self.languages.add(random.choice(tables.languages))
 
 class Dragonborn(Race):
@@ -130,9 +133,9 @@ class Dragonborn(Race):
     def __init__(self, class_):
         super().__init__(class_)
         self.languages.add('Draconic')
-        self.stats['Str'] += 2
-        self.stats['Cha'] += 1
-        self.racial_features |= {'Breath Weapon', 'Damage Resistance'}
+        self.stats['Str'].score += 2
+        self.stats['Cha'].score += 1
+        self.features |= {'Breath Weapon', 'Damage Resistance'}
         self.ancestry = random.choice([
             'Black', 'Blue', 'Brass', 'Bronze', 'Copper', 'Gold', 'Green', 'Red', 'Silver', 'White'
         ])
@@ -147,24 +150,24 @@ class Gnome(Race):
     def __init__(self, class_):
         super().__init__(class_)
         self.languages.add('Gnomish')
-        self.stats['Int'] += 2
-        self.racial_features |= {'Darkvision', 'Gnome Cunning'}
+        self.stats['Int'].score += 2
+        self.features |= {'Darkvision', 'Gnome Cunning'}
 
 class ForestGnome(Gnome):
     race_name = 'Forest Gnome'
 
     def __init__(self, class_):
         super().__init__(class_)
-        self.stats['Dex'] += 1
-        self.racial_features |= {'Natural Illusionist', 'Speak With Small Beasts'}
+        self.stats['Dex'].score += 1
+        self.features |= {'Natural Illusionist', 'Speak With Small Beasts'}
 
 class RockGnome(Gnome):
     race_name = 'Rock Gnome'
 
     def __init__(self, class_):
         super().__init__(class_)
-        self.stats['Con'] += 1
-        self.racial_features |= {'Artificers Lore', 'Tinker'}
+        self.stats['Con'].score += 1
+        self.features |= {'Artificers Lore', 'Tinker'}
         self.tool_proficiencies.add('tinkers tools')
 
 class HalfElf(Race):
@@ -177,12 +180,12 @@ class HalfElf(Race):
     def __init__(self, class_):
         super().__init__(class_)
         self.languages.add('Elvish')
-        self.stats['Cha'] += 2
+        self.stats['Cha'].score += 2
         # Increase two random stats by 1
         for stat in random.sample(['Str', 'Dex', 'Con', 'Int', 'Wis',], 2):
             self.stats[stat] += 1
 
-        self.racial_features |= {'Darkvision', 'Fey Ancestry'}
+        self.features |= {'Darkvision', 'Fey Ancestry'}
         self.skill_proficiencies |= set(random.sample(tables.proficiency, 2))
 
 class HalfOrc(Race):
@@ -195,9 +198,9 @@ class HalfOrc(Race):
     def __init__(self, class_):
         super().__init__(class_)
         self.languages.add('Orc')
-        self.stats['Str'] += 2
-        self.stats['Con'] += 1
-        self.racial_features |= {'Darkvision', 'Menacing', 'Relentless Endurance', 'Savage Attacks'}
+        self.stats['Str'].score += 2
+        self.stats['Con'].score += 1
+        self.features |= {'Darkvision', 'Menacing', 'Relentless Endurance', 'Savage Attacks'}
         self.skill_proficiencies.add('Intimidation')
 
 class Tiefling(Race):
@@ -210,23 +213,18 @@ class Tiefling(Race):
     def __init__(self, class_):
         super().__init__(class_)
         self.languages.add('Infernal')
-        self.stats['Cha'] += 2
-        self.stats['Int'] += 1
-        self.racial_features |= {'Darkvision', 'Hellish Resistance', 'Infernal Legacy'}
+        self.stats['Cha'].score += 2
+        self.stats['Int'].score += 1
+        self.features |= {'Darkvision', 'Hellish Resistance', 'Infernal Legacy'}
 
-races = [
-    HillDwarf,
-    MountainDwarf,
-    HighElf,
-    WoodElf,
-    Drow,
-    LightfootHalfling,
-    StoutHalfling,
-    Human,
-    Dragonborn,
-    ForestGnome,
-    RockGnome,
-    HalfElf,
-    HalfOrc,
-    Tiefling,
+all = [
+    [HillDwarf, MountainDwarf], 
+    [HighElf, WoodElf, Drow], 
+    [LightfootHalfling, StoutHalfling], 
+    [Human], 
+    [Dragonborn], 
+    [ForestGnome, RockGnome], 
+    [HalfElf], 
+    [HalfOrc], 
+    [Tiefling]
 ]

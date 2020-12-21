@@ -13,7 +13,7 @@ class Class:
         self.skill_proficiencies = set()
         self.tool_proficiencies = set()
         self.saving_throws = set()
-        self.class_features = set()
+        self.features = set()
         self.cantrips = set()
         self.spells = set()
         self.languages = set()
@@ -38,7 +38,7 @@ class Barbarian(Class):
         self.weapon_proficiencies |= {'simple weapons', 'martial weapons'}
         self.skill_proficiencies |= {'Animal Handling', 'Athletics', 'Intimidation', 'Nature', 'Perception', 'Survival'}
         self.saving_throws |= {'Str', 'Con'}
-        self.class_features |= {'Rage', 'Unarmored Defense'}
+        self.features |= {'Rage', 'Unarmored Defense'}
 
     def starting_equipment(self):
         all_equipment = {'explorers pack', 'x4 javelins',}
@@ -60,7 +60,7 @@ class Bard(Class):
         self.tool_proficiencies.add('three musical instruments of your choice')
         self.skill_proficiencies |= set(random.sample(tables.proficiency, 3))
         self.saving_throws |= {'Dex', 'Cha'}
-        self.class_features.add('Bardic Inspiration')
+        self.features.add('Bardic Inspiration')
         self.cantrips |= set(random.sample(tables.bard_cantrips, 2))
         self.spells |= set(random.sample(tables.bard_lvl1_spells, 4))
 
@@ -89,24 +89,24 @@ class Cleric(Class):
         self.weapon_proficiencies.add('simple weapons')
         self.skill_proficiencies |= set(random.sample(tables.proficiency, 2))
         self.saving_throws |= {'Wis', 'Cha'}
-        self.class_features.add('Channel Divinity')
+        self.features.add('Channel Divinity')
         self.cantrips |= set(random.sample(tables.cleric_cantrips, 3))
         self.spells |= set(random.sample(tables.cleric_lvl1_spells, 2))
         self.domain = random.choice(['Knowledge Cleric', 'Divine Cleric', 'Light Cleric', 'Nature Cleric', 'Tempest Cleric', 'Trickery Cleric', 'War Cleric'])
 
         if self.domain == 'Knowledge Cleric':
-            self.class_features.add('Bleesings of Knowledge')
+            self.features.add('Bleesings of Knowledge')
             self.languages |= set(random.sample(tables.languages, 2))
             self.skill_proficiencies |= set(random.sample(['Arcana', 'History', 'Nature', 'Religion'], 2))
             self.spells |= {'Command', 'Identify'}
         
         elif self.domain == 'Divine Cleric':
-            self.class_features.add('Disciple of Life')
+            self.features.add('Disciple of Life')
             self.armor_proficiencies.add('heavy armor')
             self.spells |= {'Bless', 'Cure Wounds'}
 
         elif self.domain == 'Light Cleric':
-            self.class_features.add('Warding Flare')
+            self.features.add('Warding Flare')
             self.spells |= {'Burning Hands', 'Faerie Fire'}
             self.cantrips.add(random.choice(tables.cleric_cantrips))
 
@@ -119,15 +119,15 @@ class Cleric(Class):
         elif self.domain == 'Tempest Cleric':
             self.armor_proficiencies.add('heavy armor')
             self.weapon_proficiencies.add('martial weapons')
-            self.class_features.add('Wrath of the Storm')
+            self.features.add('Wrath of the Storm')
             self.spells |= {'Fog Cloud', 'Thunderwave'}
 
         elif self.domain == 'Trickery Cleric':
-            self.class_features.add('Blessing of the Trickster')
+            self.features.add('Blessing of the Trickster')
             self.spells |= {'Charm Person', 'Disguise Self'}
 
         elif self.domain == 'War Cleric':
-            self.class_features.add('War Priest')
+            self.features.add('War Priest')
             self.armor_proficiencies.add('heavy armor')
             self.weapon_proficiencies.add('martial weapons')
             self.spells |= {'Divine Favor', 'Shield of Faith'}
@@ -197,7 +197,7 @@ class Fighter(Class):
         self.weapon_proficiencies |= {'simple weapons', 'martial weapons'}
         self.skill_proficiencies |= set(random.sample(['Acrobatics', 'Animal Handling', 'Athletics', 'History', 'Insight', 'Intimidation', 'Preception', 'Survival'], 2))
         self.saving_throws |= {'Str', 'Con'}
-        self.class_features.add('Second Wind')
+        self.features.add('Second Wind')
         self.fighting_style = random.choice(tables.fighter_styles)
     
     def starting_equipment(self):
@@ -220,7 +220,7 @@ class Monk(Class):
         self.weapon_proficiencies |= {'simple weapons', 'shortswords'}
         self.skill_proficiencies |= set(random.sample(['Acrobatics', 'Athletics', 'History', 'Insight', 'Religion', 'Stealth'], 2))
         self.saving_throws |= {'Str', 'Dex'}
-        self.class_features |= {'Unarmored Defense', 'Martial Arts'}
+        self.features |= {'Unarmored Defense', 'Martial Arts'}
 
     def starting_equipment(self):
         all_equipment = {'10 darts'}
@@ -239,7 +239,7 @@ class Paladin(Class):
         self.weapon_proficiencies |= {'simple weapons', 'martial weapons'}
         self.skill_proficiencies |= set(random.sample(['Athletics', 'Insight', 'Intimidation', 'Medicine', 'Persuasion', 'Religion'], 2))
         self.saving_throws |= {'Wis', 'Cha'}
-        self.class_features |= {'Divine Sense', 'Lay on Hands'}
+        self.features |= {'Divine Sense', 'Lay on Hands'}
     
     def starting_equipment(self):
         all_equipment = {'chain mail', 'holy symbol'}
@@ -264,7 +264,7 @@ class Ranger(Class):
         self.weapon_proficiencies |= {'simple weapons', 'martial weapons'}
         self.skill_proficiencies |= set(random.sample(['Animal Handling', 'Athletics', 'Insight', 'Investigation', 'Nature', 'Perception', 'Stealth', 'Survival'], 3))
         self.saving_throws |= {'Str', 'Dex'}
-        self.class_features |= {'Favored Enemy', 'Natural Explorer'}
+        self.features |= {'Favored Enemy', 'Natural Explorer'}
     
     def starting_equipment(self):
         all_equipment = {'longbow', 'x20 arrows', 'quiver'}
@@ -290,7 +290,7 @@ class Rogue(Class):
         self.skill_proficiencies |= set(random.sample(['Acrobatics', 'Athletics', 'Deception', 'Insight', 'Intimidation', 'Investigation', 'Perception', 
         'Performance', 'Persuasion', 'Slight of Hand', 'Stealth'], 4))
         self.saving_throws |= {'Dex', 'Int'}
-        self.class_features |= {'Expertise', 'Sneak Attack', 'Thieves Cant'}
+        self.features |= {'Expertise', 'Sneak Attack', 'Thieves Cant'}
 
     def starting_equipment(self):
         all_equipment = {'leather amror', 'two daggers', 'thieves tools'}
@@ -314,9 +314,9 @@ class Sorcerer(Class):
         self.spells |= set(random.sample(tables.sorcerer_lvl1_spells, 2))
         self.sorcerous_origin = random.choice(['Draconic Bloodline', 'Wild Magic'])
         if self.sorcerous_origin == 'Draconic Bloodine':
-            self.class_features |= {'Draconic Ancestor', 'Draconic Resillience'}
+            self.features |= {'Draconic Ancestor', 'Draconic Resillience'}
         elif self. sorcerous_origin == 'Wild Magic':
-            self.class_features |= {'Wild Magic Surge', 'Tides of Chaos'}
+            self.features |= {'Wild Magic Surge', 'Tides of Chaos'}
     
     def starting_equipment(self):
         all_equipment = {'x2 daggers'}
@@ -351,11 +351,11 @@ class Warlock(Class):
         self.patron = random.choice(['The Archfey', 'The Fiend', 'The Great Old One'])
 
         if self.patron == 'The Archfey':
-            self.class_features.add('Fey Presence')
+            self.features.add('Fey Presence')
         elif self.patron == 'The Fiend':
-            self.class_features.add('Dark ones Blessing')
+            self.features.add('Dark ones Blessing')
         elif self.patron == 'The Great Old One':
-            self.class_features.add('Awakened Mind')
+            self.features.add('Awakened Mind')
     
     def starting_equipment(self):
         all_equipment = {'leather armor', 'x2 dagger'}
@@ -385,13 +385,13 @@ class Wizard(Class):
         self.weapon_proficiencies |= {'daggers', 'darts', 'slings', 'quarterstaff', 'light crossbows'}
         self.skill_proficiencies |= set(random.sample(['Arcana', 'History', 'Insight', 'Investigation', 'Medicine', 'Religion'], 2))
         self.saving_throws |= {'Int', 'Wis'}
-        self.class_features.add('Arcane Recovery')
+        self.features.add('Arcane Recovery')
         self.cantrips |= set(random.sample(tables.wizard_cantrips, 3))
         self.spells |= set(random.sample(tables.wizard_lvl1_spells, 6))
         self.arcane_tradition = random.choice(['School of Abjuration', 'School of Conjuration', 'School of Divination', 'School of Enchantment' 'School of Evocation', 'School of Illusion', 'School of Necromancy', 'School of Transmutation'])
 
         school = self.arcane_tradition.split()[-1]
-        self.class_features.add(f'{school} Savant')
+        self.features.add(f'{school} Savant')
     
     def starting_equipment(self):
         all_equipment = {'spellbook'}
@@ -409,7 +409,7 @@ class Wizard(Class):
     def spell_attack_modifier(self, character):
         return self.proficiency_bonus + character.stats['Int'].modifier
 
-class_list = [
+all = [
     Barbarian,
     Bard,
     Cleric,
