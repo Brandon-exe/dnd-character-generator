@@ -40,7 +40,6 @@ class Ability:
     def __repr__(self):
         return f'<Ability {self}>'
 
-
 def roll_abilities():
     stat_ttl = 6
     all_abilities = [Ability() for i in range(stat_ttl)]

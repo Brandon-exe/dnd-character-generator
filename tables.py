@@ -17,7 +17,22 @@ languages = [
 ]
 
 attributes = [
-    'Str', 'Dex', 'Con', 'Int', 'Wis', 'Cha',
+    {
+        'Str': 'Athletics',
+        'Dex': {
+            'Acrobatics', 'Sleight of Hand', 'Stealth',
+        }, 
+        'Con': {
+
+        },
+        'Int': {
+            'Arcana', 'History', 'Investigation', 'Nature',
+        }, 'Wis': {
+            'Religion', 'Animal Handling' 'Insight', 'Medicine', 'Perception', 'Survival',
+        }, 'Cha': {
+            'Deception', 'Intimidation', 'Performance', 'Persuasion',
+        },
+    },
 ]
 
 armor = [
@@ -33,7 +48,7 @@ armor = [
         },
         'shield': {
             'shield',
-        }
+        },
     },
 ]
 
