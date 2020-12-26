@@ -1,10 +1,10 @@
 import random
 import pprint
-from character import Character
 import classes
 import races
 import backgrounds
 import tables
+from character import Character
 
 race = random.choice(random.choice(races.all))
 character_race = race()
