@@ -91,41 +91,41 @@ class Cleric(Class):
         self.features.add('Channel Divinity')
         self.cantrips |= set(random.sample(tables.cleric_cantrips, 3))
         self.spells |= set(random.sample(tables.cleric_lvl1_spells, 2))
-        self.domain = random.choice(['Knowledge Cleric', 'Divine Cleric', 'Light Cleric', 'Nature Cleric', 'Tempest Cleric', 'Trickery Cleric', 'War Cleric'])
+        self.domain = random.choice(['Knowledge Domain', 'Divine Domain', 'Light Domain', 'Nature Domain', 'Tempest Domain', 'Trickery Domain', 'War Domain'])
 
-        if self.domain == 'Knowledge Cleric':
+        if self.domain == 'Knowledge Domain':
             self.features.add('Bleesings of Knowledge')
             self.languages |= set(random.sample(tables.languages, 2))
             self.skill_proficiencies |= set(random.sample(['Arcana', 'History', 'Nature', 'Religion'], 2))
             self.spells |= {'Command', 'Identify'}
         
-        elif self.domain == 'Divine Cleric':
+        elif self.domain == 'Divine Domain':
             self.features.add('Disciple of Life')
             self.armor_proficiencies.add('heavy armor')
             self.spells |= {'Bless', 'Cure Wounds'}
 
-        elif self.domain == 'Light Cleric':
+        elif self.domain == 'Light Domain':
             self.features.add('Warding Flare')
             self.spells |= {'Burning Hands', 'Faerie Fire'}
             self.cantrips.add(random.choice(tables.cleric_cantrips))
 
-        elif self.domain == 'Nature Cleric':
+        elif self.domain == 'Nature Domain':
             self.armor_proficiencies.add('heavy armor')
             self.skill_proficiencies |= set(random.choice(['Animal Handling', 'Nature', 'Survival']))
             self.cantrips.add(random.choice(tables.druid_cantrips))
             self.spells |= {'Animal Friendship', 'Speak with Animals'}
 
-        elif self.domain == 'Tempest Cleric':
+        elif self.domain == 'Tempest Domain':
             self.armor_proficiencies.add('heavy armor')
             self.weapon_proficiencies.add('martial weapons')
             self.features.add('Wrath of the Storm')
             self.spells |= {'Fog Cloud', 'Thunderwave'}
 
-        elif self.domain == 'Trickery Cleric':
+        elif self.domain == 'Trickery Domain':
             self.features.add('Blessing of the Trickster')
             self.spells |= {'Charm Person', 'Disguise Self'}
 
-        elif self.domain == 'War Cleric':
+        elif self.domain == 'War Domain':
             self.features.add('War Priest')
             self.armor_proficiencies.add('heavy armor')
             self.weapon_proficiencies.add('martial weapons')
