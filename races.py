@@ -84,7 +84,7 @@ class Drow(Elf):
     def __init__(self, class_):
         super().__init__(class_)
         self.stats['Cha'].score += 1
-        self.features |= {'Superior Darkvisiclass_on', 'Sunlight Sensitivity', 'Drow Magic'}
+        self.features |= {'Superior Darkvision', 'Sunlight Sensitivity', 'Drow Magic'}
         self.weapon_proficiencies |= {'rapiers', 'shortswords', 'hand crossbows'}
 
 class Halfling(Race):

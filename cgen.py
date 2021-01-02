@@ -7,13 +7,10 @@ import tables
 from character import Character
 
 race = random.choice(random.choice(races.all))
-character_race = race()
-
+class_ = random.choice(classes.all)
+character_race = race(class_)
 character = Character(character_race)
-
-class_ = random.choice(random.choice(classes.all))
 character_class = class_(character)
-
 character.set_class(character_class)
 
 print('stats: ', end='')

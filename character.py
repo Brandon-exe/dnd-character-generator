@@ -34,7 +34,7 @@ class Ability:
         return self.score == other.score
 
     def __str__(self):
-        '''Converts to a string just as an integer'''
+        '''Converts to a string'''
         return f'{self.modifier:+} ({self.score})'
 
     def __repr__(self):
@@ -54,11 +54,11 @@ class Character:
         self.height = random.choice(race.height_range)
         self.weight = random.choice(race.weight_range)
         self.alignment = random.choice(tables.alignment)
-        self.languages = {'Common'} | race.languages
         self.racial_features = set(race.features)
         self.armor_proficiencies = set(race.armor_proficiencies())
 
     def set_class(self, class_):
+        self.languages = {'Common'} | race.languages | class_.languages
         self.class_ = class_
         self.class_name = (class_.class_name)
         self.class_features = set(class_.features)
@@ -75,3 +75,4 @@ class Character:
         self.spells = set(class_.spells)
         self.equipment = class_.starting_equipment()
         self.stats = dict(zip(class_.stat_preference, roll_abilities()))
+
