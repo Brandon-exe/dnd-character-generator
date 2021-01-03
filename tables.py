@@ -161,33 +161,33 @@ acolyte = [
             'Insight', 'Religion',
         },
         'personality': {
-            '''I idolize a particular hero of my faith, and constantly refer to that person's deeds and example.''',
-            '''I can find common ground between the fiercest enemies, empathizing with them and always working toward peace.''',
-            '''I see omens in every event and action. The gods try to speak to us, we just need to listen.''',
-            '''Nothing can shake my optimistic attitude.''',
-            '''I quote (or misquote) sacred texts and proverbs in almost every situation.''',
-            '''I am tolerant (or intolerant) of other faiths and respect (or condemn) the worship of other gods.''',
-            '''I've enjoyed fin food, drink, and high society among my temple's elite. Rough living grates on me.''',
-            '''I've spent so long in the temple that I have little practical experience dealing with people in the outside world.''',
+            "I idolize a particular hero of my faith, and constantly refer to that person's deeds and example.",
+            "I can find common ground between the fiercest enemies, empathizing with them and always working toward peace.",
+            "I see omens in every event and action. The gods try to speak to us, we just need to listen.",
+            "Nothing can shake my optimistic attitude.",
+            "I quote (or misquote) sacred texts and proverbs in almost every situation.",
+            "I am tolerant (or intolerant) of other faiths and respect (or condemn) the worship of other gods.",
+            "I've enjoyed fin food, drink, and high society among my temple's elite. Rough living grates on me.",
+            "I've spent so long in the temple that I have little practical experience dealing with people in the outside world.",
         },
         'ideal': {
             'Tradition', 'Charity', 'Change', 'Power', 'Faith', 'Aspiration',
         },
         'bond': {
-            '''I would die to recover an ancient relic of my faith that was lost long ago.''',
-            '''I will someday get revenge on the corrupt temple hierarchy who randed my a heretic''',
-            '''I owe my life to the priest who took me in when my parents died.''',
-            '''Everything I do is for the common people''',
-            '''I will do anything to protect the temple where I served''',
-            '''I seek to preserve a sacred text that my enemies consider heretical and seek to destroy''',
+            "I would die to recover an ancient relic of my faith that was lost long ago.",
+            "I will someday get revenge on the corrupt temple hierarchy who randed my a heretic",
+            "I owe my life to the priest who took me in when my parents died.",
+            "Everything I do is for the common people",
+            "I will do anything to protect the temple where I served",
+            "I seek to preserve a sacred text that my enemies consider heretical and seek to destroy",
         },
         'flaw': {
-            '''I judge others harshly, and myself even more severely.''',
-            '''I put too much trust in those who wield power within my temple's hierarchy.''',
-            '''My piety sometimes leads me to blindly trust those that profess faith in my god.''',
-            '''I am inflexible in my thinking.''',
-            '''I am suspicious of strangers and expect the worst of them.''',
-            '''Once I pick a goal, I become obsessed with it to the detriment of everything else in my life.''',
+            "I judge others harshly, and myself even more severely.",
+            "I put too much trust in those who wield power within my temple's hierarchy.",
+            "My piety sometimes leads me to blindly trust those that profess faith in my god.",
+            "I am inflexible in my thinking.",
+            "I am suspicious of strangers and expect the worst of them.",
+            "Once I pick a goal, I become obsessed with it to the detriment of everything else in my life.",
         },
     },
 ]
@@ -204,29 +204,41 @@ charlatan = [
             },
         },
         'favorite scam': {
-            '''cheat at games.''',
-            '''shave coins and forge documents.''',
-            '''insinuate into people's lives to secure their fortunes.''',
-            '''forged identities''',
-            '''sleight-of-hand cons''',
-            '''convince people that worthless junk is worth money.''',
+            "cheat at games.",
+            "shave coins and forge documents.",
+            "insinuate into people's lives to secure their fortunes.",
+            "forged identities",
+            "sleight-of-hand cons",
+            "convince people that worthless junk is worth money.",
         },
         'personality': {
-            '''Fall in and out of love easily, always pursuing someone for romance''',
-            '''Always joking, especially when it's inappropriate to do so''',
-            '''Prefer to flater to get what I want''',
-            '''Always looking to gamble, heavy risk-taker''', 
-            '''Habitual liar, even when there's no reason to lie''',
-            '''Always sarcastic and insulting''',
-            '''Own several holy symbols to select whatever deity may be useful for any reason''',
-            '''Always pick-pocketing what looks valuble'''
+            "Fall in and out of love easily, always pursuing someone for romance",
+            "Always joking, especially when it's inappropriate to do so",
+            "Prefer to flater to get what I want",
+            "Always looking to gamble, heavy risk-taker", 
+            "Habitual liar, even when there's no reason to lie",
+            "Always sarcastic and insulting",
+            "Own several holy symbols to select whatever deity may be useful for any reason",
+            "Always pick-pocketing what looks valuble"
         },
         'ideal': {
             'Independance', 'Fairness', 'Charity', 'Creativity', 'Friendship', 'Aspiration'
         },
         'bond': {
-            '''I've robbed the wrong person, and I need to make sure they don't find me or the people I care about''',
-            ''''''
+            "I've robbed the wrong person, and I need to make sure they don't find me or the people I care about.",
+            "I owe it all to my mentor, who is probably in jail because he's a horrible person.",
+            "I have a child who doesn't know I exist. I strive to make the world a better place for them.",
+            "I was a noble, who's land and title were stolen, I work to gain them back."
+            "Someone I love was murdered by a powerful person. I seek revenge."
+            "I seek to redeem myself from swindling someone who didn't diserve it and ruining their life."
+        },
+        'flaw': {
+            "I'm a sucker for a pretty face",
+            "I always spend my gold on luxuries and am always in debt."
+            "I'm convenced that I cannot be had the way I have others."
+            "I'm always willing to take risks when money is involved. My greed knows no bounds."
+            "I'm always looking to swindle those in power."
+            "If things get bad, I will always look to save myself before others."
         },
     },
 ]

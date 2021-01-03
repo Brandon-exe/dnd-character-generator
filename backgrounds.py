@@ -39,3 +39,11 @@ class Charlatan(Background):
         self.scam.add(random.choice(tables.charlatan['favorite scam']))
         self.features.add('false identity')
         self.personality.add(random.choice(tables.charlatan['personality']))
+        self.ideal.add(random.choice(tables.charlatan['ideal']))
+        self.bond.add(random.choice(tables.charlatan['bond']))
+        self.flaw.add(random.choice(tables.charlatan['flaw']))
+
+    def starting_equipment(self):
+        all_equipment = {'fine cloths', 'disguise kit', 'x15 gold'}
+        
+        return all_equipment
