@@ -1,6 +1,6 @@
 import random
-from .classes import classes
-from .tables import tables
+from . import classes
+from . import tables
 
 class Race:
     def __init__(self, class_):
