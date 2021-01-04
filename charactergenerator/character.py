@@ -3,7 +3,6 @@ from .classes import classes
 from .races import races
 from .backgrounds import backgrounds
 from .tables import tables
-from .character import Character
 
 # rolling the 4d6 for your stat
 def roll_stat():

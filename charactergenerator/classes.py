@@ -1,7 +1,4 @@
 import random
-from .classes import classes
-from .races import races
-from .backgrounds import backgrounds
 from .tables import tables
 from .character import Character
 
