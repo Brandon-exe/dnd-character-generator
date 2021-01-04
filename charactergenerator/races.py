@@ -1,7 +1,9 @@
 import random
-import tables
-import character
-import classes
+from charactergenerator.classes import classes
+from charactergenerator.races import races
+from charactergenerator.background import backgrounds
+from charactergenerator.tables import tables
+from charactergenerator.character import Character
 
 class Race:
     def __init__(self, class_):

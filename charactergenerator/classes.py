@@ -1,6 +1,9 @@
 import random
-import tables
-import character
+from charactergenerator.classes import classes
+from charactergenerator.races import races
+from charactergenerator.background import backgrounds
+from charactergenerator.tables import tables
+from charactergenerator.character import Character
 
 class Class:
     proficiency_bonus = 2

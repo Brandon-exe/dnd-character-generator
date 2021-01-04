@@ -1,8 +1,9 @@
 import random
-import tables
-import classes
-import races
-import backgrounds
+from charactergenerator.classes import classes
+from charactergenerator.races import races
+from charactergenerator.background import backgrounds
+from charactergenerator.tables import tables
+from charactergenerator.character import Character
 
 # rolling the 4d6 for your stat
 def roll_stat():
