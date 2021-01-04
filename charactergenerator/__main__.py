@@ -1,9 +1,7 @@
 import random
 import pprint
-from .classes import classes
-from .races import races
-from .backgrounds import backgrounds
-from .tables import tables
+from . import classes
+from . import races
 from .character import Character
 
 race = random.choice(random.choice(races.all))

@@ -1,5 +1,5 @@
 import random
-from .tables import tables
+from . import tables
 from .character import Character
 
 class Class:

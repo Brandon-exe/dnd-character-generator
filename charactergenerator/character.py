@@ -1,8 +1,8 @@
 import random
-from .classes import classes
-from .races import races
-from .backgrounds import backgrounds
-from .tables import tables
+from . import classes
+from . import races
+from . import backgrounds
+from . import tables
 
 # rolling the 4d6 for your stat
 def roll_stat():
