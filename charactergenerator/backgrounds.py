@@ -1,5 +1,5 @@
 import random
-from charactergenerator.tables import tables
+from .tables import tables
 
 
 class Background:
