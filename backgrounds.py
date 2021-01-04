@@ -44,6 +44,6 @@ class Charlatan(Background):
         self.flaw.add(random.choice(tables.charlatan['flaw']))
 
     def starting_equipment(self):
-        all_equipment = {'fine cloths', 'disguise kit', 'x15 gold'}
+        all_equipment = {'fine clothes', 'disguise kit', 'x15 gold'}
         
         return all_equipment
