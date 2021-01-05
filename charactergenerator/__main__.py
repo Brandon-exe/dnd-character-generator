@@ -7,7 +7,7 @@ from .character import Character
 def main():
     race = random.choice(random.choice(races.all))
     class_ = random.choice(classes.all)
-    character_race = race(class_)
+    character_race = race()
     character = Character(character_race)
     character_class = class_(character)
     character.set_class(character_class)

@@ -1,10 +1,9 @@
 import random
-from . import classes
 from . import tables
 
 class Race:
-    def __init__(self, class_):
-        self.class_ = class_
+    def __init__(self):
+        self. = 
         self.languages = set()
         self.skill_proficiencies = set()
         self.weapon_proficiencies = set()
@@ -19,29 +18,44 @@ class Dwarf(Race):
     weight_range = range(100, 200)
     speed = 25
 
-    def __init__(self, class_):
-        super().__init__(class_)
+    def __init__(self):
+        super().__init__()
         self.languages.add('Dwarvish')
         self.weapon_proficiencies |= {'battleaxes', 'handaxes', 'light hammers', 'warhammers'}
         self.tool_proficiencies.add(random.choice(['smith tools', 'brewer supplies', 'mason tools']))
         self.features |= {'Darkvision', 'Dwarven Resillience', 'Stonecunning'}
-        self.stats['Con'].score += 2
+    
+    @staticmethod
+    def stat_bonuses():
+        return {
+            'Con': 2,
+        }
 
 class HillDwarf(Dwarf):
     race_name = 'Hill Dwarf'
 
-    def __init__(self, class_):
-        super().__init__(class_)
+    def __init__(self):
+        super().__init__()
         self.features.add('Dwarven Toughness')
-        self.stats['Wis'].score += 1
+    
+    @staticmethod
+    def stat_bonuses():
+        bonuses = super().stat_bonuses()
+        bonuses['Wis'] = 1
+        return bonuses
 
 class MountainDwarf(Dwarf):
     race_name = 'Mountain Dwarf'
 
-    def __init__(self, class_):
-        super().__init__(class_)
+    def __init__(self):
+        super().__init__()
         self.armor_proficiencies |= {'light armor', 'medium armor'}
-        self.stats['Str'].score += 2
+    
+    @staticmethod
+    def stat_bonuses():
+        bonuses = super().stat_bonuses()
+        bonuses['Str'] = 1
+        return bonuses
 
 class Elf(Race):
     race_name = 'Elf'
@@ -50,41 +64,61 @@ class Elf(Race):
     weight_range = range(100, 150)
     speed = 30
 
-    def __init__(self, class_):
-        super().__init__(class_)
+    def __init__(self):
+        super().__init__()
         self.features |= {'Darkvision', 'Fey Ancestry', 'Trance'}
         self.languages.add('Elvish')
         self.skill_proficiencies.add('Perception')
-        self.stats['Dex'].score += 2
+    
+    @staticmethod
+    def stat_bonuses():
+        return {
+            'Dex': 2,
+        }
 
 class HighElf(Elf):
     race_name = 'High Elf'
 
-    def __init__(self, class_):
-        super().__init__(class_)
-        self.stats['Int'].score += 1
+    def __init__(self):
+        super().__init__()
         self.weapon_proficiencies |= {'longswords', 'shortswords', 'shortbows', 'longbows'}
         self.features.add('Cantrip')
         self.languages.add(random.choice(tables.languages))
+
+    @staticmethod
+    def stat_bonuses():
+        bonuses = super().stat_bonuses()
+        bonuses['Int'] = 1
+        return bonuses
 
 class WoodElf(Elf):
     race_name = 'Wood Elf'
     speed = 35
 
-    def __init__(self, class_):
-        super().__init__(class_)
-        self.stats['Wis'].score += 1
+    def __init__(self):
+        super().__init__()
         self.weapon_proficiencies |= {'longswords', 'shortswords', 'shortbows', 'longbows'}
         self.features.add('Mask of the Wild')
+    
+    @staticmethod
+    def stat_bonuses():
+        bonuses = super().stat_bonuses()
+        bonuses['Wis'] = 1
+        return bonuses
 
 class Drow(Elf):
     race_name = 'Drow'
 
-    def __init__(self, class_):
-        super().__init__(class_)
-        self.stats['Cha'].score += 1
+    def __init__(self):
+        super().__init__()
         self.features |= {'Superior Darkvision', 'Sunlight Sensitivity', 'Drow Magic'}
         self.weapon_proficiencies |= {'rapiers', 'shortswords', 'hand crossbows'}
+
+    @staticmethod
+    def stat_bonuses():
+        bonuses = super().stat_bonuses()
+        bonuses['Cha'] = 1
+        return bonuses
 
 class Halfling(Race):
     race_name = 'Halfling'
@@ -93,27 +127,42 @@ class Halfling(Race):
     weight_range = range(20, 50)
     speed = 25
 
-    def __init__(self, class_):
-        super().__init__(class_)
+    def __init__(self):
+        super().__init__()
         self.features |= {'Lucky', 'Brave', 'Halfling Nimbleness'}
         self.languages.add('Halfling')
-        self.stats['Dex'].score += 2
+
+    @staticmethod
+    def stat_bonuses():
+        return {
+            'Dex': 2,
+        }
 
 class LightfootHalfling(Halfling):
     race_name = 'Lightfoot Halfling'
 
-    def __init__(self, class_):
-        super().__init__(class_)
-        self.stats['Cha'].score += 1
+    def __init__(self):
+        super().__init__()
         self.features.add('Naturally Stealthy')
+
+    @staticmethod
+    def stat_bonuses():
+        bonuses = super().stat_bonuses()
+        bonuses['Cha'] = 1
+        return bonuses
 
 class StoutHalfling(Halfling):
     race_name = 'Stout Halfling'
 
-    def __init__(self, class_):
-        super().__init__(class_)
-        self.stats['Con'].score += 1
+    def __init__(self):
+        super().__init__()
         self.features.add('Stout Resillience')
+
+    @staticmethod
+    def stat_bonuses():
+        bonuses = super().stat_bonuses()
+        bonuses['Con'] = 1
+        return bonuses
 
 class Human(Race):
     race_name = 'Human'
@@ -122,11 +171,15 @@ class Human(Race):
     weight_range = range(120, 200)
     speed = 30
 
-    def __init__(self, class_):
-        super().__init__(class_)
-        for stat in ['Str', 'Dex', 'Con', 'Int', 'Wis', 'Cha']:
-            self.stats[stat].score += 1
+    def __init__(self):
+        super().__init__()
         self.languages.add(random.choice(tables.languages))
+
+    @staticmethod
+    def stat_bonuses():
+        for stat in ['Str', 'Dex', 'Con', 'Int', 'Wis', 'Cha']:
+            bonuses[stat] += 1
+        return bonuses
 
 class Dragonborn(Race):
     race_name = 'Dragonborn'
@@ -135,15 +188,21 @@ class Dragonborn(Race):
     weight_range = range(200, 300)
     speed = 30
 
-    def __init__(self, class_):
-        super().__init__(class_)
+    def __init__(self):
+        super().__init__()
         self.languages.add('Draconic')
-        self.stats['Str'].score += 2
-        self.stats['Cha'].score += 1
         self.features |= {'Breath Weapon', 'Damage Resistance'}
         self.ancestry = random.choice([
             'Black', 'Blue', 'Brass', 'Bronze', 'Copper', 'Gold', 'Green', 'Red', 'Silver', 'White'
         ])
+
+    @staticmethod
+    def stat_bonuses():
+        return {
+            'Str': 2,
+            'Cha': 1,
+        }
+
 
     def __str__(self):
         return super().__str__() + f', ancestry: {self.ancestry}'
@@ -155,28 +214,43 @@ class Gnome(Race):
     weight_range = range(20, 50)
     speed = 25
 
-    def __init__(self, class_):
-        super().__init__(class_)
+    def __init__(self):
+        super().__init__()
         self.languages.add('Gnomish')
-        self.stats['Int'].score += 2
         self.features |= {'Darkvision', 'Gnome Cunning'}
+
+    @staticmethod
+    def stat_bonuses():
+        return {
+            'Int': 2,
+        }
 
 class ForestGnome(Gnome):
     race_name = 'Forest Gnome'
 
-    def __init__(self, class_):
-        super().__init__(class_)
-        self.stats['Dex'].score += 1
+    def __init__(self):
+        super().__init__()
         self.features |= {'Natural Illusionist', 'Speak With Small Beasts'}
+
+    @staticmethod
+    def stat_bonuses():
+        bonuses = super().stat_bonuses()
+        bonuses['Dex'] = 1
+        return bonuses
 
 class RockGnome(Gnome):
     race_name = 'Rock Gnome'
 
-    def __init__(self, class_):
-        super().__init__(class_)
-        self.stats['Con'].score += 1
+    def __init__(self):
+        super().__init__()
         self.features |= {'Artificers Lore', 'Tinker'}
         self.tool_proficiencies.add('tinkers tools')
+
+    @staticmethod
+    def stat_bonuses():
+        bonuses = super().stat_bonuses()
+        bonuses['Con'] = 1
+        return bonuses
 
 class HalfElf(Race):
     race_name = 'Half Elf'
@@ -185,16 +259,20 @@ class HalfElf(Race):
     weight_range = range(115, 180)
     speed = 30
 
-    def __init__(self, class_):
-        super().__init__(class_)
+    def __init__(self):
+        super().__init__()
         self.languages.add('Elvish')
-        self.stats['Cha'].score += 2
         # Increase two random stats by 1
         for stat in random.sample(['Str', 'Dex', 'Con', 'Int', 'Wis',], 2):
             self.stats[stat] += 1
-
         self.features |= {'Darkvision', 'Fey Ancestry'}
         self.skill_proficiencies |= set(random.sample(tables.proficiency, 2))
+        
+    @staticmethod
+    def stat_bonuses():
+        return {
+            'Cha': 2,
+        }
 
 class HalfOrc(Race):
     race_name = 'Half Orc'
@@ -203,13 +281,18 @@ class HalfOrc(Race):
     weight_range = range(150, 300)
     speed = 30
 
-    def __init__(self, class_):
-        super().__init__(class_)
+    def __init__(self):
+        super().__init__()
         self.languages.add('Orc')
-        self.stats['Str'].score += 2
-        self.stats['Con'].score += 1
         self.features |= {'Darkvision', 'Menacing', 'Relentless Endurance', 'Savage Attacks'}
         self.skill_proficiencies.add('Intimidation')
+
+    @staticmethod
+    def stat_bonuses():
+        return {
+            'Str': 2,
+            'Con': 1
+        }
 
 class Tiefling(Race):
     race_name = 'Tiefling'
@@ -218,12 +301,17 @@ class Tiefling(Race):
     weight_range = range(120, 200)
     speed = 30
 
-    def __init__(self, class_):
-        super().__init__(class_)
+    def __init__(self):
+        super().__init__()
         self.languages.add('Infernal')
-        self.stats['Cha'].score += 2
-        self.stats['Int'].score += 1
         self.features |= {'Darkvision', 'Hellish Resistance', 'Infernal Legacy'}
+
+    @staticmethod
+    def stat_bonuses():
+        return {
+            'Cha': 2,
+            'Int': 1
+        }
 
 all = [
     [HillDwarf, MountainDwarf], 

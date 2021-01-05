@@ -75,4 +75,5 @@ class Character:
         self.spells = set(class_.spells)
         self.equipment = class_.starting_equipment()
         self.stats = dict(zip(class_.stat_preference, roll_abilities()))
-
+        for stat, bonus in self.race.stat_bonuses().items():
+            self.stats[stat].score += bonus
