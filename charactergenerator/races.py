@@ -199,10 +199,13 @@ class Dragonborn(Race):
     @staticmethod
     def stat_bonuses():
         return {
-            'Str': 2,
+            'Str': 1,
+            'Dex': 1,
+            'Con': 1,
+            'Wis': 1,
+            'Int': 1,
             'Cha': 1,
         }
-
 
     def __str__(self):
         return super().__str__() + f', ancestry: {self.ancestry}'
@@ -262,17 +265,15 @@ class HalfElf(Race):
     def __init__(self):
         super().__init__()
         self.languages.add('Elvish')
-        # Increase two random stats by 1
-        for stat in random.sample(['Str', 'Dex', 'Con', 'Int', 'Wis',], 2):
-            self.stats[stat] += 1
         self.features |= {'Darkvision', 'Fey Ancestry'}
         self.skill_proficiencies |= set(random.sample(tables.proficiency, 2))
-        
+
     @staticmethod
     def stat_bonuses():
-        return {
-            'Cha': 2,
-        }
+        random_bonuses = random.sample(['Str', 'Dex', 'Con', 'Wis', 'Int'], 2)
+        total_bonuses = {bonus: 1 for bonus in random_bonuses}
+        total_bonuses['Cha'] = 2
+        return total_bonuses
 
 class HalfOrc(Race):
     race_name = 'Half Orc'
